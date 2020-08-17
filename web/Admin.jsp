@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Visita
-    Created on : 16/08/2020, 11:09:46
+    Document   : Admin
+    Created on : 16/08/2020, 19:17:57
     Author     : Jose
 --%>
 
@@ -13,41 +13,36 @@
         <title>Bienvenido</title>
     </head>
     <body>
-       <nav class="navbar navbar-expand-lg navbar-light bg-info">
-       
+        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-             
-          
-            <li class="nav-item active">
-              <a class="nav-link" href="Controlador?accion=Bienvenidos" target="iframe">Inicio<span class="sr-only">(current)</span></a>
-            </li>
+
+            
             <li class="nav-item">
               <a class="nav-link" href="Controlador?accion=Habitaciones" target="iframe">Habitaciones</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Controlador?accion=Contacto" target="iframe">Contacto</a>
-            </li>
-            
+
           </ul>
             <div class="dropdown" >
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 Iniciar Sesión
+                 ${usuario.getUsuario()}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <img src="img/login.png" alt="70" width="70"/>
-                  <a class="dropdown-item" href="Controlador?accion=Ingreso">Ingresar</a>
-                  
+                  <a class="dropdown-item" href="#">Nombre ${usuario.getUsuario()}</a>
+                  <a class="dropdown-item" href="#">${usuario.getNivel()}</a>
+                  <a class="dropdown-item" href="Controlador?accion=Ingreso">Salir</a>
                   
                 </div>
               </div>
         </div>
         
       </nav>
-        
+      
                   <div class="m-4" style="height: 550px;">
                       <iframe name="iframe" style="height: 100%; width: 100%">                        
                       </iframe>

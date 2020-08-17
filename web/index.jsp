@@ -40,8 +40,8 @@
                         </div>--%>
                         
                     </form>
-                        <h3>Ingresar como visitante</h3>
-                         <a href="Controlador?accion=Visitante" method="POST">Ingresar como visitante</a>
+                        
+                         <a href="Controlador?accion=Visitante">Ingresar como visitante</a>
                         
                 </div>
             </div>

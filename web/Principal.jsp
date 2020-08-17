@@ -16,7 +16,7 @@
     <body>
         
      <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <a class="navbar-brand" href="#">Navbar</a>
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,17 +25,18 @@
              
           
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="Controlador?accion=Bienvenidos" target="iframe">Inicio<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="Controlador?accion=Habitaciones" target="iframe">Habitaciones</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="Controlador?accion=Reserva" target="iframe">Reserva</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              <a class="nav-link" href="Controlador?accion=Contacto" target="iframe">Contacto</a>
             </li>
+            
           </ul>
             <div class="dropdown" >
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,15 +44,20 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <img src="img/login.png" alt="70" width="70"/>
-                  <a class="dropdown-item" href="#">Usuario</a>
-                  <a class="dropdown-item" href="#">${usuario.getNivel()}</a>
-                  <a class="dropdown-item" href="index.jsp">Salir</a>
+                  <a class="dropdown-item" href="#">Nombre: ${usuario.getUsuario()}</a>
+                  <a class="dropdown-item" href="#">Nivel: ${usuario.getNivel()}</a>
+                  <a class="dropdown-item" href="Controlador?accion=Ingreso">Salir</a>
                   
                 </div>
               </div>
         </div>
         
       </nav>
+      
+                  <div class="m-4" style="height: 550px;">
+                      <iframe name="iframe" style="height: 100%; width: 100%">                        
+                      </iframe>
+                  </div>
          
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

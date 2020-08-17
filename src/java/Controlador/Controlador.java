@@ -31,8 +31,26 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         String accion=request.getParameter("accion");
         switch(accion){
+            case "Ingreso":
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                break;
+            case "Admin":
+                request.getRequestDispatcher("Admin.jsp").forward(request, response);
+                break;
             case "Principal":
                 request.getRequestDispatcher("Principal.jsp").forward(request, response);
+                break;
+            case "Bienvenidos":
+                request.getRequestDispatcher("Bienvenidos.jsp").forward(request, response);
+                break;
+            case "Habitaciones":
+                request.getRequestDispatcher("Habitaciones.jsp").forward(request, response);
+                break;
+            case "Reserva":
+                request.getRequestDispatcher("Reserva.jsp").forward(request, response);
+                break;
+            case "Contacto":
+                request.getRequestDispatcher("Contacto.jsp").forward(request, response);
                 break;
             case "Visitante":
                 request.getRequestDispatcher("Visita.jsp").forward(request, response);
