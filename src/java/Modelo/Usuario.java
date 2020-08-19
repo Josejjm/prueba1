@@ -11,6 +11,9 @@ package Modelo;
  */
 public class Usuario {
     int id;
+    String nombre;
+    String direccion;
+    String email;
     String usuario;
     String clave;
     String nivel;
@@ -18,8 +21,11 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int id, String usuario, String clave, String nivel) {
+    public Usuario(int id, String nombre, String direccion, String email, String usuario, String clave, String nivel) {
         this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.email = email;
         this.usuario = usuario;
         this.clave = clave;
         this.nivel = nivel;
@@ -31,6 +37,30 @@ public class Usuario {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsuario() {
@@ -56,5 +86,9 @@ public class Usuario {
     public void setNivel(String nivel) {
         this.nivel = nivel;
     }
+    
+    
+
+    
     
 }

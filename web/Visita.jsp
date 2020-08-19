@@ -23,13 +23,13 @@
              
           
             <li class="nav-item active">
-              <a class="nav-link" href="Controlador?accion=Bienvenidos" target="iframe">Inicio<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="Controlador?menu=Bienvenidos" target="iframe">Inicio<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Controlador?accion=Habitaciones" target="iframe">Habitaciones</a>
+              <a class="nav-link" href="Controlador?menu=Habitaciones" target="iframe">Habitaciones</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Controlador?accion=Contacto" target="iframe">Contacto</a>
+              <a class="nav-link" href="Controlador?menu=Contacto" target="iframe">Contacto</a>
             </li>
             
           </ul>
@@ -39,7 +39,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <img src="img/login.png" alt="70" width="70"/>
-                  <a class="dropdown-item" href="Controlador?accion=Ingreso">Ingresar</a>
+                  <a class="dropdown-item" href="Controlador?menu=Ingreso">Ingresar</a>
                   
                   
                 </div>

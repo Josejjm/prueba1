@@ -33,15 +33,12 @@
                         </div>
                         
                         <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
-                        
-                        <%--<div class="form-group text-center">
-                            <h3>Ingresar como visitante</h3>
-                            <input type="submit" name="accion" value="Visitante" class="btn btn-primary btn-block">
-                        </div>--%>
-                        
+                        <br>
+
                     </form>
-                        
-                         <a href="Controlador?accion=Visitante">Ingresar como visitante</a>
+                        <a href="Controlador?menu=Registro" class="btn btn-primary btn-block" >Crear Cuenta</a>
+                        <br>
+                        <a href="Controlador?menu=Visitante"  class="btn btn-primary btn-block" >Ingresar como visitante</a>
                         
                 </div>
             </div>

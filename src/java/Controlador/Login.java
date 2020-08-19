@@ -83,14 +83,15 @@ public class Login extends HttpServlet {
             us=udao.login(user,pass);
             
             if(us.getUsuario()!=null && us.getNivel().equals("admin")){
+                
                 request.setAttribute("usuario", us);
-                request.getRequestDispatcher("Controlador?accion=Admin").forward(request, response);
+                request.getRequestDispatcher("Controlador?menu=Admin").forward(request, response);
                 
             }
             
             if(us.getUsuario()!=null){
                 request.setAttribute("usuario", us);
-                request.getRequestDispatcher("Controlador?accion=Principal").forward(request, response);
+                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
                 
             }else{
                 request.getRequestDispatcher("index.jsp").forward(request, response);

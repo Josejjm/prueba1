@@ -25,16 +25,16 @@
              
           
             <li class="nav-item active">
-              <a class="nav-link" href="Controlador?accion=Bienvenidos" target="iframe">Inicio<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="Controlador?menu=Bienvenidos" target="iframe">Inicio<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Controlador?accion=Habitaciones" target="iframe">Habitaciones</a>
+              <a class="nav-link" href="Controlador?menu=Habitaciones" target="iframe">Habitaciones</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="Controlador?accion=Reserva" target="iframe">Reserva</a>
+                <a class="nav-link" href="Controlador?menu=Usuario" target="iframe">Reserva</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Controlador?accion=Contacto" target="iframe">Contacto</a>
+              <a class="nav-link" href="Controlador?menu=Contacto" target="iframe">Contacto</a>
             </li>
             
           </ul>
@@ -46,7 +46,7 @@
                     <img src="img/login.png" alt="70" width="70"/>
                   <a class="dropdown-item" href="#">Nombre: ${usuario.getUsuario()}</a>
                   <a class="dropdown-item" href="#">Nivel: ${usuario.getNivel()}</a>
-                  <a class="dropdown-item" href="Controlador?accion=Ingreso">Salir</a>
+                  <a class="dropdown-item" href="Controlador?menu=Ingreso">Salir</a>
                   
                 </div>
               </div>

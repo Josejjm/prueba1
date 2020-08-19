@@ -23,7 +23,7 @@
 
             
             <li class="nav-item">
-              <a class="nav-link" href="Controlador?accion=Habitaciones" target="iframe">Habitaciones</a>
+              <a class="nav-link" href="Controlador?menu=Usuario&accion=Listar" target="iframe">Usuarios</a>
             </li>
 
           </ul>
@@ -35,7 +35,7 @@
                     <img src="img/login.png" alt="70" width="70"/>
                   <a class="dropdown-item" href="#">Nombre ${usuario.getUsuario()}</a>
                   <a class="dropdown-item" href="#">${usuario.getNivel()}</a>
-                  <a class="dropdown-item" href="Controlador?accion=Ingreso">Salir</a>
+                  <a class="dropdown-item" href="Controlador?menu=Ingreso">Salir</a>
                   
                 </div>
               </div>
