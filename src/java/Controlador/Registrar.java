@@ -13,17 +13,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Jose
  */
-public class Login extends HttpServlet {
-    
-    UsuarioDAO udao= new UsuarioDAO();
-    Usuario us = new Usuario();
-    
+public class Registrar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,22 +29,40 @@ public class Login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    Usuario us = new Usuario();
+    UsuarioDAO udao = new UsuarioDAO();
+    int idu;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-           
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter();
+        
+        String nombre = request.getParameter("txtNombre");
+        String direccion = request.getParameter("txtDireccion");
+        String email = request.getParameter("txtEmail");
+        String usuario = request.getParameter("txtUsuario");
+        String clave = request.getParameter("txtClave");
+        
+        
+        if(nombre.equals("")||direccion.equals("")||email.equals("")||
+            usuario.equals("")||clave.equals("")){
+              request.getRequestDispatcher("Registro.jsp").forward(request, response);
+               
+                }else {
+        us.setNombre(nombre);
+        us.setDireccion(direccion);
+        us.setEmail(email);
+        us.setEmail(email);
+        us.setUsuario(usuario);        
+        us.setClave(clave);        
+        us.setNivel("normal");
+        udao.agregar(us); 
+        request.getRequestDispatcher("index.jsp").forward(request, response);
         }
+               
+                  
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -78,39 +91,14 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accion=request.getParameter("accion");
-       
-        if(accion.equalsIgnoreCase("Visitante")){
-            
-            HttpSession obse = request.getSession(true);
-            obse.setAttribute("sesion", "");
-            request.setAttribute("nombre", "visitante");
-            us.setNivel("visitante");
-            
-            request.setAttribute("usuario", us);
-            request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
-        }
-        
-        if(accion.equalsIgnoreCase("Ingresar")){
-            String user=request.getParameter("user");
-            String pass=request.getParameter("pass");
-            
-            us=udao.login(user,pass);
-            
-            
-            if(us.getUsuario()!=null){
-                HttpSession obse = request.getSession(true);
-                obse.setAttribute("sesion", us.getNivel());
-                request.setAttribute("usuario", us);
-                request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
-                
-            }else{
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
-            
-        } 
+        processRequest(request, response);
     }
-    
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

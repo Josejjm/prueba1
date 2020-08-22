@@ -11,12 +11,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <title>Registro</title>
+        <script src="js/main.js"></script>
     </head>
     <body>
          
             <div class="container mt-4 col-lg-4">
+                
                     <div class="card-body">
-                        <form action="Controlador?menu=Registro" method="POST">
+                        <form action="Registrar" method="POST">
                             <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" name="txtNombre" class="form-control">
@@ -35,17 +37,16 @@
                             </div>
                             <div class="form-group">
                                 <label>Clave</label>
-                                <input type="text" name="txtClave" class="form-control">
+                                <input type="password" name="txtClave" class="form-control">
                             </div>
-                            <div class="form-group" class="form-control">
-                                <label>Nivel</label>
-                                <input type="text" name="txtNivel" class="form-control">
-                            </div>
+                            
                             <br>
-                            <input type="submit" name="accion" value="Crear" class="btn btn-primary">
-                            <br><br>
+                            
+                            <input type="submit" value="Crear" class="btn btn-primary btn-block">
+                            <br>
                             
                         </form>
+                        
                         <a href="Controlador?menu=Ingreso" class="btn btn-primary btn-block" >Salir</a>
                     </div>
                 </div>

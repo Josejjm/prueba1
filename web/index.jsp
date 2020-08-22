@@ -34,11 +34,12 @@
                         
                         <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
                         <br>
-
+                        <input type="submit" name="accion" value="Visitante" class="btn btn-primary btn-block">
+                        <br>
                     </form>
                         <a href="Controlador?menu=Registro" class="btn btn-primary btn-block" >Crear Cuenta</a>
                         <br>
-                        <a href="Controlador?menu=Visitante"  class="btn btn-primary btn-block" >Ingresar como visitante</a>
+                        
                         
                 </div>
             </div>

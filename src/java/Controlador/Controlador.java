@@ -9,7 +9,9 @@ import Modelo.Usuario;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.List;
+import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -132,6 +134,9 @@ public class Controlador extends HttpServlet {
         }
         if(menu.equals("Registro")){
             request.getRequestDispatcher("Registro.jsp").forward(request, response);
+            
+            
+            
             switch(accion){
                 case "Crear":
                 String nombre = request.getParameter("txtNombre");
@@ -140,6 +145,13 @@ public class Controlador extends HttpServlet {
                 String usuario = request.getParameter("txtUsuario");
                 String clave = request.getParameter("txtClave");
                 String nivel = request.getParameter("txtNivel");
+                
+                
+                if(nombre.equals("")||direccion.equals("")||email.equals("")||
+                    usuario.equals("")||clave.equals("")||nivel.equals("")){
+                    request.getRequestDispatcher("Controlador?menu=Ingreso").forward(request, response);
+                    
+                }
                 us.setNombre(nombre);
                 us.setDireccion(direccion);
                 us.setEmail(email);
@@ -147,14 +159,17 @@ public class Controlador extends HttpServlet {
                 us.setClave(clave);
                 us.setNivel(nivel);
                 udao.agregar(us);
-                request.getRequestDispatcher("Controlador?menu=Ingreso").forward(request, response);
+                  
+                
+                
                 break;
                 
                 default:
                 throw new AssertionError();
                 
             }
-            request.getRequestDispatcher("index.jsp").forward(request, response); 
+            
+            
         }
         
     }

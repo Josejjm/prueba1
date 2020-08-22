@@ -5,6 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession obse = request.getSession(false);
+    String us = (String) obse.getAttribute("sesion");
+    
+    
+    %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,25 +36,48 @@
             <li class="nav-item">
               <a class="nav-link" href="Controlador?menu=Habitaciones" target="iframe">Habitaciones</a>
             </li>
+            <%if(us.equals("admin")||us.equals("normal")){
+                %>
             <li class="nav-item">
-                <a class="nav-link" href="Controlador?menu=Usuario" target="iframe">Reserva</a>
+                <a class="nav-link" href="Controlador?menu=Reserva" target="iframe">Reserva</a>
             </li>
+                <%}
+            %>
             <li class="nav-item">
               <a class="nav-link" href="Controlador?menu=Contacto" target="iframe">Contacto</a>
             </li>
-            
+            <%if(us.equals("admin")){
+                %>
+            <li class="nav-item">
+              <a class="nav-link" href="Controlador?menu=Usuario&accion=Listar" target="iframe">Usuarios</a>
+            </li>    
+                
+                <%}
+            %>
           </ul>
             <div class="dropdown" >
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                 ${usuario.getUsuario()}
+                   <%if(us.equals("admin")||us.equals("normal")){
+                %> 
+                ${usuario.getUsuario()}
+                <%} else{%>
+                    Visitante
+                    <%}%>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <img src="img/login.png" alt="70" width="70"/>
+                  
+                  <%if(us.equals("admin")||us.equals("normal")){
+                    %>
                   <a class="dropdown-item" href="#">Nombre: ${usuario.getUsuario()}</a>
+                  <%}else{%>
+                   <a class="dropdown-item" href="#">Nombre: Visitante</a>
+                    <%}%>
                   <a class="dropdown-item" href="#">Nivel: ${usuario.getNivel()}</a>
-                  <a class="dropdown-item" href="Controlador?menu=Ingreso">Salir</a>
+                  <a class="dropdown-item" href="Controlador?menu=Ingreso" method="POST">Salir</a>
                   
                 </div>
+                  
               </div>
         </div>
         

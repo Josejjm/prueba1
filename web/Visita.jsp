@@ -29,6 +29,9 @@
               <a class="nav-link" href="Controlador?menu=Habitaciones" target="iframe">Habitaciones</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="Controlador?menu=Registro" target="iframe">Crear cuenta</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="Controlador?menu=Contacto" target="iframe">Contacto</a>
             </li>
             

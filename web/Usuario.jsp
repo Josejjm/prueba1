@@ -40,7 +40,11 @@
                             </div>
                             <div class="form-group" class="form-control">
                                 <label>Nivel</label>
-                                <input type="text" value="${usuario.getNivel()}" name="txtNivel" class="form-control">
+                                
+                                    <select name="txtNivel" class="form-control">
+                                    <option value="normal">normal</option> 
+                                    <option value="admin" selected>admin</option>
+                                    </select>
                             </div>
                             <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
                             <input type="submit" name="accion" value="Actualizar" class="btn btn-primary">
