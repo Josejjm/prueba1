@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.Habitacion;
+import Modelo.HabitacionDAO;
 import Modelo.Usuario;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
@@ -37,6 +39,10 @@ public class Controlador extends HttpServlet {
     UsuarioDAO udao = new UsuarioDAO();
     int idu;
     
+    Habitacion ha = new Habitacion();
+    HabitacionDAO hdao = new HabitacionDAO();
+    int idh;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String accion=request.getParameter("accion");
@@ -47,10 +53,7 @@ public class Controlador extends HttpServlet {
         
         
         
-        if(menu.equals("Admin")){
-            request.getRequestDispatcher("Admin.jsp").forward(request, response);
-                     
-        }
+        
         
         if(menu.equals("Usuario")){
                       
@@ -118,7 +121,53 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Bienvenidos.jsp").forward(request, response);
         }
         if(menu.equals("Habitaciones")){
+            
+            switch(accion){
+            case "Listar":
+                List lista = hdao.listar();
+                request.setAttribute("habit", lista);
+                
+                break;
+            case "Agregar":
+                String nombre = request.getParameter("txtNombre");
+                String precio = request.getParameter("txtPrecio");
+                
+                ha.setNombre(nombre);
+                ha.setPrecio(Integer.parseInt(precio));
+                
+                hdao.agregar(ha);
+                request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
+                break;  
+                
+            case "Editar":
+                idh=Integer.parseInt(request.getParameter("id"));
+                Habitacion h =hdao.listarId(idh);
+                request.setAttribute("habitacion", h);
+                request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
+                break;
+            
+            case "Actualizar":
+                String hnombre = request.getParameter("txtNombre");
+                String hprecio = request.getParameter("txtPrecio");
+                
+                ha.setId(idh);
+                ha.setNombre(hnombre);
+                if(!hprecio.equals(""))
+                ha.setPrecio(Integer.parseInt(hprecio));
+                
+                hdao.actualizar(ha);
+                request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
+                break;
+            case "Eliminar":
+                idh=Integer.parseInt(request.getParameter("id"));
+                hdao.eliminar(idh);
+                request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
+                break;
+            default:
+                throw new AssertionError();
+                }
             request.getRequestDispatcher("Habitaciones.jsp").forward(request, response);
+            
         }
         if(menu.equals("Reserva")){
             request.getRequestDispatcher("Reserva.jsp").forward(request, response);
@@ -129,46 +178,42 @@ public class Controlador extends HttpServlet {
         if(menu.equals("Ingreso")){
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
-        if(menu.equals("Visitante")){
-            request.getRequestDispatcher("Visita.jsp").forward(request, response);
-        }
+        
         if(menu.equals("Registro")){
-            request.getRequestDispatcher("Registro.jsp").forward(request, response);
-            
-            
             
             switch(accion){
+                case "Registrar":
+                    request.getRequestDispatcher("Registro.jsp").forward(request, response);
+                    break;
+                    
                 case "Crear":
                 String nombre = request.getParameter("txtNombre");
                 String direccion = request.getParameter("txtDireccion");
                 String email = request.getParameter("txtEmail");
                 String usuario = request.getParameter("txtUsuario");
                 String clave = request.getParameter("txtClave");
-                String nivel = request.getParameter("txtNivel");
-                
-                
+
+
                 if(nombre.equals("")||direccion.equals("")||email.equals("")||
-                    usuario.equals("")||clave.equals("")||nivel.equals("")){
-                    request.getRequestDispatcher("Controlador?menu=Ingreso").forward(request, response);
-                    
-                }
+                    usuario.equals("")||clave.equals("")){
+                      request.getRequestDispatcher("Registro.jsp").forward(request, response);
+
+                        }else {
                 us.setNombre(nombre);
                 us.setDireccion(direccion);
                 us.setEmail(email);
-                us.setUsuario(usuario);
-                us.setClave(clave);
-                us.setNivel(nivel);
-                udao.agregar(us);
-                  
-                
-                
+                us.setUsuario(usuario);        
+                us.setClave(clave);        
+                us.setNivel("normal");
+                udao.agregar(us); 
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
                 break;
                 
                 default:
                 throw new AssertionError();
                 
             }
-            
             
         }
         

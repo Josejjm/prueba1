@@ -18,7 +18,7 @@
             <div class="container mt-4 col-lg-4">
                 
                     <div class="card-body">
-                        <form action="Registrar" method="POST">
+                        <form action="Controlador?menu=Registro" method="POST">
                             <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" name="txtNombre" class="form-control">
@@ -42,7 +42,7 @@
                             
                             <br>
                             
-                            <input type="submit" value="Crear" class="btn btn-primary btn-block">
+                            <input type="submit" name="accion" value="Crear" class="btn btn-primary btn-block">
                             <br>
                             
                         </form>

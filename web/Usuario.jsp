@@ -46,8 +46,8 @@
                                     <option value="admin" selected>admin</option>
                                     </select>
                             </div>
-                            <input type="submit" name="accion" value="Agregar" class="btn btn-primary">
-                            <input type="submit" name="accion" value="Actualizar" class="btn btn-primary">
+                            <input type="submit" name="accion" value="Agregar" class="btn btn-warning">
+                            <input type="submit" name="accion" value="Actualizar" class="btn btn-danger">
                         </form>
 
                     </div>
@@ -80,7 +80,7 @@
                                     <td>
                                         <a href="Controlador?menu=Usuario&accion=Editar&id=${u.getId()}" class="btn btn-primary">Editar</a>
                                         <b></b>
-                                        <a href="Controlador?menu=Usuario&accion=Eliminar&id=${u.getId()}" class="btn btn-primary">Eliminar</a>
+                                        <a href="Controlador?menu=Usuario&accion=Eliminar&id=${u.getId()}" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
                             </c:forEach>

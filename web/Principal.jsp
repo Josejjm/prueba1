@@ -16,72 +16,81 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/estilos.css">
         <title>Bienvenido</title>
         
     </head>
     <body>
         
-     <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-             
-          
-            <li class="nav-item active">
-              <a class="nav-link" href="Controlador?menu=Bienvenidos" target="iframe">Inicio<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Controlador?menu=Habitaciones" target="iframe">Habitaciones</a>
-            </li>
-            <%if(us.equals("admin")||us.equals("normal")){
-                %>
-            <li class="nav-item">
-                <a class="nav-link" href="Controlador?menu=Reserva" target="iframe">Reserva</a>
-            </li>
-                <%}
-            %>
-            <li class="nav-item">
-              <a class="nav-link" href="Controlador?menu=Contacto" target="iframe">Contacto</a>
-            </li>
-            <%if(us.equals("admin")){
-                %>
-            <li class="nav-item">
-              <a class="nav-link" href="Controlador?menu=Usuario&accion=Listar" target="iframe">Usuarios</a>
-            </li>    
-                
-                <%}
-            %>
-          </ul>
-            <div class="dropdown" >
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                   <%if(us.equals("admin")||us.equals("normal")){
-                %> 
-                ${usuario.getUsuario()}
-                <%} else{%>
-                    Visitante
-                    <%}%>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <img src="img/login.png" alt="70" width="70"/>
-                  
-                  <%if(us.equals("admin")||us.equals("normal")){
-                    %>
-                  <a class="dropdown-item" href="#">Nombre: ${usuario.getUsuario()}</a>
-                  <%}else{%>
-                   <a class="dropdown-item" href="#">Nombre: Visitante</a>
-                    <%}%>
-                  <a class="dropdown-item" href="#">Nivel: ${usuario.getNivel()}</a>
-                  <a class="dropdown-item" href="Controlador?menu=Ingreso" method="POST">Salir</a>
-                  
-                </div>
-                  
-              </div>
-        </div>
-        
-      </nav>
+        <header id="main-header" class="navbar navbar-expand-lg navbar-dark bg-dark">
+            
+
+
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarNav">
+             <ul class="navbar-nav">
+
+
+               <li class="nav-item active">
+                 <a class="nav-link" href="Controlador?menu=Bienvenidos" target="iframe">Inicio<span class="sr-only">(current)</span></a>
+               </li>
+
+               <%if(us.equals("admin")||us.equals("normal")){
+                   %>
+               <li class="nav-item">
+                   <a class="nav-link" href="Controlador?menu=Reserva" target="iframe">Reserva</a>
+               </li>
+                   <%}
+               %>
+               <li class="nav-item">
+                 <a class="nav-link" href="Controlador?menu=Contacto" target="iframe">Contacto</a>
+               </li>
+               <%if(us.equals("admin")){
+                   %>
+               <li class="nav-item">
+                 <a class="nav-link" href="Controlador?menu=Usuario&accion=Listar" target="iframe">Usuarios</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="Controlador?menu=Habitaciones&accion=Listar" target="iframe">Habitaciones</a>
+               </li>
+
+                   <%}
+               %>
+             </ul>
+               <div class="dropdown" >
+                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <%if(us.equals("admin")||us.equals("normal")){
+                   %> 
+                   ${usuario.getUsuario()}
+                   <%} else{%>
+                       Visitante
+                       <%}%>
+                   </button>
+                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                       <img src="img/login.png" alt="70" width="70"/>
+
+                     <%if(us.equals("admin")||us.equals("normal")){
+                       %>
+                     <a class="dropdown-item" href="#">Nombre: ${usuario.getUsuario()}</a>
+                     <%}else{%>
+                      <a class="dropdown-item" href="#">Nombre: Visitante</a>
+                       <%}%>
+                     <a class="dropdown-item" href="#">Nivel: ${usuario.getNivel()}</a>
+                     <a class="dropdown-item" href="Controlador?menu=Ingreso" method="POST">Salir</a>
+
+                   </div>
+
+                 </div>
+           </div>
+
+         </header>
+                  <main>
+                      <section id="banner">
+                          <img src="img/banner.jpg">
+                      </section>
+                  </main>
       
                   <div class="m-4" style="height: 550px;">
                       <iframe name="iframe" style="height: 100%; width: 100%">                        

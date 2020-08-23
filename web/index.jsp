@@ -37,7 +37,7 @@
                         <input type="submit" name="accion" value="Visitante" class="btn btn-primary btn-block">
                         <br>
                     </form>
-                        <a href="Controlador?menu=Registro" class="btn btn-primary btn-block" >Crear Cuenta</a>
+                        <a href="Controlador?menu=Registro&accion=Registrar" class="btn btn-primary btn-block" >Crear Cuenta</a>
                         <br>
                         
                         
