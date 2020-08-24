@@ -5,6 +5,8 @@
  */
 package Controlador;
 
+import Modelo.Contacto;
+import Modelo.ContactoDAO;
 import Modelo.Habitacion;
 import Modelo.HabitacionDAO;
 import Modelo.Usuario;
@@ -42,6 +44,11 @@ public class Controlador extends HttpServlet {
     Habitacion ha = new Habitacion();
     HabitacionDAO hdao = new HabitacionDAO();
     int idh;
+    
+    Contacto co = new Contacto();
+    ContactoDAO cdao = new ContactoDAO();
+    int idc;
+    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -173,7 +180,99 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Reserva.jsp").forward(request, response);
         }
         if(menu.equals("Contacto")){
-            request.getRequestDispatcher("Contacto.jsp").forward(request, response);
+            
+            if(accion.equals("Contacto")){
+               request.getRequestDispatcher("Contacto.jsp").forward(request, response);  
+            }
+            if(accion.equals("Enviar")){
+                String nombre = request.getParameter("txtNombre");
+                String email = request.getParameter("txtEmail");
+                String telefono = request.getParameter("txtTelefono");
+                String mensaje = request.getParameter("txtMensaje");
+                String estado = "pendiente";
+
+
+                if(nombre.equals("")||email.equals("")||telefono.equals("")||
+                    mensaje.equals("")){
+                      request.getRequestDispatcher("Contacto.jsp").forward(request, response);
+
+                        }else {
+                    co.setNombre(nombre);
+                    co.setEmail(email);
+                    co.setTelefono(telefono);
+                    co.setMensaje(mensaje);
+                    co.setEstado(estado);      
+                
+                    cdao.agregar(co); 
+                    
+                    request.getRequestDispatcher("Bienvenidos.jsp").forward(request, response);
+                }
+            }
+            
+            
+            
+            
+            
+        }
+        if(menu.equals("Consultas")){
+            
+            switch(accion){
+                    case "Listar":
+                    List lista = cdao.listar();
+                    request.setAttribute("cont", lista);
+                    break;
+
+                    case "Agregar":
+                    String nombre = request.getParameter("txtNombre");
+                    String email = request.getParameter("txtEmail");
+                    String telefono = request.getParameter("txtTelefono");
+                    String mensaje = request.getParameter("txtMensaje");
+                    String estado = request.getParameter("txtEstado");
+
+                    co.setNombre(nombre);
+                    co.setEmail(email);
+                    co.setTelefono(telefono);
+                    co.setMensaje(mensaje);
+                    co.setEstado(estado);
+                    cdao.agregar(co);
+                    request.getRequestDispatcher("Controlador?menu=Consultas&accion=Listar").forward(request, response);
+                    break;  
+                    
+                    case "Editar":
+                    idc=Integer.parseInt(request.getParameter("id"));
+                    Contacto c =cdao.listarId(idc);
+                    request.setAttribute("contacto", c);
+                    request.getRequestDispatcher("Controlador?menu=Consultas&accion=Listar").forward(request, response);
+                    break;
+                    
+                    case "Actualizar":
+                    String cnombre = request.getParameter("txtNombre");
+                    String cemail = request.getParameter("txtEmail");
+                    String ctelefono = request.getParameter("txtTelefono");
+                    String cmensaje = request.getParameter("txtMensaje");
+                    String cestado = request.getParameter("txtEstado");
+
+                    co.setId(idc);
+                    co.setNombre(cnombre);
+                    co.setEmail(cemail);
+                    co.setTelefono(ctelefono);
+                    co.setMensaje(cmensaje);
+                    co.setEstado(cestado);
+                    cdao.actualizar(co);
+                    request.getRequestDispatcher("Controlador?menu=Consultas&accion=Listar").forward(request, response);
+                    break;
+                    
+                    case "Eliminar":
+                    idc=Integer.parseInt(request.getParameter("id"));
+                    cdao.eliminar(idc);
+                    request.getRequestDispatcher("Controlador?menu=Consultas&accion=Listar").forward(request, response);
+                    break;
+
+                    default:
+                    throw new AssertionError();
+                
+                    }
+            request.getRequestDispatcher("Consultas.jsp").forward(request, response);
         }
         if(menu.equals("Ingreso")){
             request.getRequestDispatcher("index.jsp").forward(request, response);

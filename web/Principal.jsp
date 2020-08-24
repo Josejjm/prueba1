@@ -45,7 +45,7 @@
                    <%}
                %>
                <li class="nav-item">
-                 <a class="nav-link" href="Controlador?menu=Contacto" target="iframe">Contacto</a>
+                 <a class="nav-link" href="Controlador?menu=Contacto&accion=Contacto" target="iframe">Contacto</a>
                </li>
                <%if(us.equals("admin")){
                    %>
@@ -54,6 +54,9 @@
                </li>
                <li class="nav-item">
                  <a class="nav-link" href="Controlador?menu=Habitaciones&accion=Listar" target="iframe">Habitaciones</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="Controlador?menu=Consultas&accion=Listar" target="iframe">Consultas</a>
                </li>
 
                    <%}
@@ -92,7 +95,7 @@
                       </section>
                   </main>
       
-                  <div class="m-4" style="height: 550px;">
+                  <div class="m-6" style="height: 550px;">
                       <iframe name="iframe" style="height: 100%; width: 100%">                        
                       </iframe>
                   </div>
