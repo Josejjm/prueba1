@@ -91,7 +91,7 @@
          </header>
                   <main>
                       <section id="banner">
-                          <img src="img/banner.jpg">
+                          <%-- <img src="img/banner.jpg">--%>
                       </section>
                   </main>
       

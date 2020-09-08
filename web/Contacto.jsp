@@ -29,11 +29,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Telefono</label>
-                                <input type="text" name="txtTelefono" class="form-control">
+                                <input type="text"  name="txtTelefono" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Mensaje</label>
-                                <input type="text" name="txtMensaje" class="form-control">
+                                <textarea name="txtMensaje" style="HEIGHT: 200px" class="form-control"></textarea>
+                                
                             </div>
                             
                             

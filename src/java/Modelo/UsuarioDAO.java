@@ -24,6 +24,8 @@ public class UsuarioDAO {
     ResultSet rs;
     int r;
     
+    
+    //LOGIN
     public Usuario login(String user, String pass){
         Usuario us= new Usuario();
         String sql= "select * from usuario where usuario=? and clave=?";
@@ -44,7 +46,7 @@ public class UsuarioDAO {
         return us;
     }
     
-    //asdasd
+    //CRUD
     
     public List listar(){
         String sql = "select * from usuario";

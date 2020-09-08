@@ -55,12 +55,7 @@ public class Controlador extends HttpServlet {
         String accion=request.getParameter("accion");
         String menu = request.getParameter("menu");
        
-        
-        
-        
-        
-        
-        
+
         
         if(menu.equals("Usuario")){
                       
