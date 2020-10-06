@@ -9,6 +9,8 @@ import Modelo.Contacto;
 import Modelo.ContactoDAO;
 import Modelo.Habitacion;
 import Modelo.HabitacionDAO;
+import Modelo.Res;
+import Modelo.ResDAO;
 import Modelo.Usuario;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
@@ -48,6 +50,10 @@ public class Controlador extends HttpServlet {
     Contacto co = new Contacto();
     ContactoDAO cdao = new ContactoDAO();
     int idc;
+    
+    Res res = new Res();
+    ResDAO resdao = new ResDAO();
+    int idres;
     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -129,6 +135,7 @@ public class Controlador extends HttpServlet {
                 List lista = hdao.listar();
                 request.setAttribute("habit", lista);
                 
+                
                 break;
             case "Agregar":
                 String nombre = request.getParameter("txtNombre");
@@ -172,7 +179,42 @@ public class Controlador extends HttpServlet {
             
         }
         if(menu.equals("Reserva")){
+            
+            
+            switch(accion){
+                
+                case "Listar":
+                    request.getRequestDispatcher("Reserva.jsp").forward(request, response);
+                    break;
+                
+                case "Mostrar reservas":
+                    String nombre = request.getParameter("id");
+                    List lista = resdao.listar(nombre);
+                    request.setAttribute("res", lista);
+                    break;
+                    
+                
+                case "Crear":
+                String fecha = request.getParameter("txtFecha");
+                String nombre1 = request.getParameter("txtNombre");
+                if(fecha.equals("") ||nombre1.equals("") ){
+                      request.getRequestDispatcher("Reserva.jsp").forward(request, response);
+
+                        }else {
+                res.setFecha(fecha);
+                res.setNombre(nombre1);
+                resdao.agregar(res); 
+                request.getRequestDispatcher("Reserva.jsp").forward(request, response);
+                }
+                break;
+                
+                default:
+                throw new AssertionError();
+                
+            }
+            
             request.getRequestDispatcher("Reserva.jsp").forward(request, response);
+
         }
         if(menu.equals("Contacto")){
             
@@ -203,9 +245,7 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Bienvenidos.jsp").forward(request, response);
                 }
             }
-            
-            
-            
+
             
             
         }

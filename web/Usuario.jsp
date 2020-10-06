@@ -6,6 +6,11 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession obse = request.getSession(false);
+    String us = (String) obse.getAttribute("sesion");
+
+%>
 <!DOCTYPE html>
 <html>
     <head>

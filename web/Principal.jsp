@@ -19,7 +19,7 @@
         <title>Bienvenido</title>
         <style type="text/css">
             html, body, div, iframe { margin:0; padding:0; height:100%; }
-            iframe { display:block; width:100%; border:none; }
+            iframe, img { display:block; width:100%; border:none; }
         </style>
     </head>
     <body>
@@ -35,7 +35,10 @@
                     <%if (us.equals("admin") || us.equals("normal")) {
                     %>
                     <li class="nav-item">
-                        <a class="nav-link" href="Controlador?menu=Reserva" target="iframe">Reserva</a>
+                        <a class="nav-link" href="Controlador?menu=Reserva&accion=Listar" target="iframe">Reserva</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?menu=Habitaciones&accion=Listar" target="iframe">Habitaciones</a>
                     </li>
                     <%}
                     %>
@@ -47,16 +50,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=Usuario&accion=Listar" target="iframe">Usuarios</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Controlador?menu=Habitaciones&accion=Listar" target="iframe">Habitaciones</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=Consultas&accion=Listar" target="iframe">Consultas</a>
                     </li>
                     <%}
                     %>
                 </ul>
-                <div class="dropdown" >
+                <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <%if (us.equals("admin") || us.equals("normal")) {
                         %> 
@@ -65,8 +66,8 @@
                         Visitante
                         <%}%>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <img src="img/login.png" alt="70" width="70"/>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+                        
                         <%if (us.equals("admin") || us.equals("normal")) {
                         %>
                         <a class="dropdown-item" href="#">Nombre: ${usuario.getUsuario()}</a>

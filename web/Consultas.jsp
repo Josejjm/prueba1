@@ -23,7 +23,7 @@
         <title>Consultas</title>
         <style>
             body {
-                background-image: url('https://image.freepik.com/foto-gratis/tablero-madera-sobre-fondo-borroso-fondo-interior-vista-dentro-hotel-recepcion-o-pasillo-moderno-fondo_1962-320.jpg');
+                
                 background-repeat: no-repeat;
                 background-size: cover;
             }

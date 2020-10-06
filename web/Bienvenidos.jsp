@@ -33,7 +33,7 @@
                                 Es un Excelente lugar para relajarse, pasar el tiempo en familia y realizar excursiones guiadas para conocer
                                 la cultura de la region.</span></p>
                         <div class="w3l-button">
-                            <a href="Habitaciones.jsp" data-toggle="modal" data-target="#myModal">Ver Habitaciones</a>
+                            <a href="Controlador?menu=Habitaciones&accion=Listar" data-toggle="modal" data-target="#myModal">Ver Habitaciones</a>
                         </div>
                     </div>
                     <div class="col-md-6 w3-about-right">

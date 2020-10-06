@@ -6,6 +6,11 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession obse = request.getSession(false);
+    String us = (String) obse.getAttribute("sesion");
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,6 +19,35 @@
         <title>Habitaciones</title>
     </head>
     <body>
+            <%if(us.equals("normal")){%>
+            
+            <div class="d-flex">
+            <div class="card col-lg-6">
+                
+                <div align="center">
+                    <img src="img/h1.jpg"  width="400"/>
+                    <h1>Suite de lujo</h1>
+                    <h3>Precio por noche $900</h3>    
+                    <div class="col-lg-6">
+                    <a href="Controlador?menu=Reserva&accion=Listar&tipo=lujo" class="btn btn-primary btn-block">Reservar</a>
+                    </div>
+                </div>                       
+            </div>
+            <div class="card col-lg-6">
+                    <div align="center">
+                    <img src="img/h2.jpg"  width="400"/>
+                    <h1>Habitacion Standar</h1>
+                    <h3>Precio por noche $500</h3>    
+                    <div class="col-lg-6">
+                    <a href="Controlador?menu=Reserva&accion=Listar" class="btn btn-primary btn-block">Reservar</a>
+                    </div>
+                </div> 
+            </div>
+            </div>
+            
+                <%}%>
+        <%if (us.equals("admin")) {
+        %>
         <div class="d-flex">
             <div class="card col-lg-3">
                     <div class="card-body">
@@ -66,8 +100,10 @@
                 </div>
             
         </div>
-        
+        <%}
+        %>
     </body>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

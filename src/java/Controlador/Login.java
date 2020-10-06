@@ -101,6 +101,8 @@ public class Login extends HttpServlet {
             if(us.getUsuario()!=null){
                 HttpSession obse = request.getSession(true);
                 obse.setAttribute("sesion", us.getNivel());
+                obse.setAttribute("nom", us.getUsuario());
+                obse.setAttribute("idus", us.getId());
                 request.setAttribute("usuario", us);
                 request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
                 
