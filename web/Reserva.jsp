@@ -6,13 +6,14 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
-    HttpSession obse = request.getSession(false);
+    HttpSession obse = request.getSession();
     String us = (String) obse.getAttribute("sesion");
-    
-    Integer id=(Integer)(obse.getAttribute("idus"));
+
     String nom=(String)obse.getAttribute("nom");
     String tipo = request.getParameter("tipo");
+    String foto = request.getParameter("foto");
 %>
 <!DOCTYPE html>
 <html>
@@ -23,53 +24,70 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%out.print(id.intValue());%>
         
             <div class="d-flex">
-            <div class="card col-lg-3"></div>
-            <div class="card col-lg-3">
+                <div class="card col-lg-3">
+                    <br>
+                    <a href="Controlador?menu=Reserva&accion=Mostrar reservas&id=<%=nom%>" class="btn btn-danger" style="margin:auto" >Ver mis reservas</a>
+                    <br>
+                </div>
+                    <%if(tipo!=null){%>
+            <div class="card col-lg-3" style="padding-top:10px">
                         <form action="Controlador?menu=Reserva" method="POST">
+                            
+
+                            <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" value="<%=nom%>" name="txtNombre" readonly="readonly" class="form-control">
+                            </div>
+                            <div class="form-group">
+                            <label>Habitacion</label>
+                            <input type="text" value="<%=tipo%>" name="txtHabitacion" readonly="readonly" class="form-control">
+                            </div>
+                            <div class="form-group" align="center">
+                            
+                            <img src="img/h<%=foto%>.jpg"  style="width:100%"/>
+                            
+                            </div>
+                            
                             <div class="form-group">
                             <label>Fecha ingreso</label>
-                            <input type="date" name="txtFecha" class="form-control">
+                            <input type="date" name="txtFechaE" class="form-control">
                             </div>
                             <div class="form-group">
                             <label>Fecha salida</label>
                             <input type="date" name="txtFechaS" class="form-control">
                             </div>
-                            <div class="form-group">
-                            <label>Nombre</label>
-                            <input type="text" value="<%=nom%>" name="txtNombre" class="form-control">
-                            </div>
-                            <div class="form-group">
-                            <label>Habitacion</label>
-                            <input type="text" value="<%=tipo%>" name="txtHabitacion" class="form-control">
-                            </div>
                             <br>
                             
-                            <input type="submit" name="accion" value="Crear" class="btn btn-primary btn-block">
+                            <input type="submit" name="accion" value="Crear" class="btn btn-primary btn-block" style="margin:auto">
                             <br>
                             
                             
                         </form>
-                        <a href="Controlador?menu=Reserva&accion=Mostrar reservas&id=<%=nom%>" class="btn btn-primary btn-block" >Ver mis reservas</a>
+                        
                         
                     </div>
+                            <%}%>
                 <div class="col-lg-6">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>Fecha</th>
+                                <th>Nº reserva</th>
+                                <th>Fecha ingreso</th>
+                                <th>Fecha salida</th>
                                 <th>Nombre</th>
+                                <th>Habitacion</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach items="${res}" var="c">
                                 <tr>
                                     <td>${c.getId()}</td> 
-                                    <td>${c.getFecha()}</td>
+                                    <td>${c.getFechaE()}</td>
+                                    <td>${c.getFechaS()}</td>
                                     <td>${c.getNombre()}</td> 
+                                    <td>${c.getHabitacion()}</td> 
                                 </tr>
                             </c:forEach>
                         </tbody>

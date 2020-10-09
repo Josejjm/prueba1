@@ -128,6 +128,9 @@ public class Controlador extends HttpServlet {
         if(menu.equals("Bienvenidos")){
             request.getRequestDispatcher("Bienvenidos.jsp").forward(request, response);
         }
+        if(menu.equals("index")){
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
         if(menu.equals("Habitaciones")){
             
             switch(accion){
@@ -195,14 +198,19 @@ public class Controlador extends HttpServlet {
                     
                 
                 case "Crear":
-                String fecha = request.getParameter("txtFecha");
+                String fechaE = request.getParameter("txtFechaE");
+                String fechaS = request.getParameter("txtFechaS");
                 String nombre1 = request.getParameter("txtNombre");
-                if(fecha.equals("") ||nombre1.equals("") ){
+                String habitacion = request.getParameter("txtHabitacion");
+                if(fechaE.equals("") || fechaS.equals("") || 
+                        nombre1.equals("") || habitacion.equals("") ){
                       request.getRequestDispatcher("Reserva.jsp").forward(request, response);
 
                         }else {
-                res.setFecha(fecha);
+                res.setFechaE(fechaE);
+                res.setFechaS(fechaS);
                 res.setNombre(nombre1);
+                res.setHabitacion(habitacion);
                 resdao.agregar(res); 
                 request.getRequestDispatcher("Reserva.jsp").forward(request, response);
                 }
@@ -310,7 +318,7 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Consultas.jsp").forward(request, response);
         }
         if(menu.equals("Ingreso")){
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("Bienvenidos.jsp").forward(request, response);
         }
         
         if(menu.equals("Registro")){
@@ -340,7 +348,7 @@ public class Controlador extends HttpServlet {
                 us.setClave(clave);        
                 us.setNivel("normal");
                 udao.agregar(us); 
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("Controlador?menu=Bienvenidos").forward(request, response);
                 }
                 break;
                 

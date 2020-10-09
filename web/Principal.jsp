@@ -29,19 +29,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="Controlador?menu=Bienvenidos" target="iframe">Inicio<span class="sr-only">(current)</span></a>
-                    </li>
+                    
                     <%if (us.equals("admin") || us.equals("normal")) {
                     %>
                     <li class="nav-item">
-                        <a class="nav-link" href="Controlador?menu=Reserva&accion=Listar" target="iframe">Reserva</a>
+                        <a class="nav-link" href="Controlador?menu=Reserva&accion=Listar" target="iframe">Reservas</a>
                     </li>
+                    
+                    <%}
+                    %>
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=Habitaciones&accion=Listar" target="iframe">Habitaciones</a>
                     </li>
-                    <%}
-                    %>
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=Contacto&accion=Contacto" target="iframe">Contacto</a>
                     </li>
@@ -59,12 +58,7 @@
                 </ul>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <%if (us.equals("admin") || us.equals("normal")) {
-                        %> 
-                        ${usuario.getUsuario()}
-                        <%} else {%>
-                        Visitante
-                        <%}%>
+                        Mi cuenta
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
                         
@@ -75,7 +69,7 @@
                         <a class="dropdown-item" href="#">Nombre: Visitante</a>
                         <%}%>
                         <a class="dropdown-item" href="#">Nivel: ${usuario.getNivel()}</a>
-                        <a class="dropdown-item" href="Controlador?menu=Ingreso" method="POST">Salir</a>
+                        <a class="dropdown-item" href="Controlador?menu=index" method="POST">Salir</a>
                     </div>
                 </div>
             </div>

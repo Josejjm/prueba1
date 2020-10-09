@@ -34,8 +34,10 @@ public class ResDAO {
             while(rs.next()){
                 Res r = new Res();
                 r.setId(rs.getInt(1));
-                r.setFecha(rs.getString(2));
-                r.setNombre(rs.getString(3));
+                r.setFechaE(rs.getString(2));
+                r.setFechaS(rs.getString(3));
+                r.setNombre(rs.getString(4));
+                r.setHabitacion(rs.getString(5));
                 lista.add(r);
             }
             
@@ -46,12 +48,14 @@ public class ResDAO {
     }
     
     public int agregar(Res re){
-        String sql="insert into res (fecha, nombre) values (?, ?)";
+        String sql="insert into res (fechae, fechas, nombre, habitacion) values (?, ?, ?, ?)";
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);
-            ps.setString(1, re.getFecha());
-            ps.setString(2, re.getNombre());
+            ps.setString(1, re.getFechaE());
+            ps.setString(2, re.getFechaS());
+            ps.setString(3, re.getNombre());
+            ps.setString(4, re.getHabitacion());
 
             ps.executeUpdate();
             

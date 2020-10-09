@@ -19,31 +19,40 @@
         <title>Habitaciones</title>
     </head>
     <body>
-            <%if(us.equals("normal")){%>
-            
-            <div class="d-flex">
-            <div class="card col-lg-6">
+            <%if(us.equals("normal")||us.equals("")){%>
+
+                <c:forEach items="${habit}" var="h">
+                    <div class="d-flex" >
+            <div class="card col-lg-4" style="padding:10px">
                 
-                <div align="center">
-                    <img src="img/h1.jpg"  width="400"/>
-                    <h1>Suite de lujo</h1>
-                    <h3>Precio por noche $900</h3>    
-                    <div class="col-lg-6">
-                    <a href="Controlador?menu=Reserva&accion=Listar&tipo=lujo" class="btn btn-primary btn-block">Reservar</a>
-                    </div>
-                </div>                       
-            </div>
-            <div class="card col-lg-6">
                     <div align="center">
-                    <img src="img/h2.jpg"  width="400"/>
-                    <h1>Habitacion Standar</h1>
-                    <h3>Precio por noche $500</h3>    
-                    <div class="col-lg-6">
-                    <a href="Controlador?menu=Reserva&accion=Listar" class="btn btn-primary btn-block">Reservar</a>
-                    </div>
+                    <img src="img/h${h.getId()}.jpg"  style="width:100%"/>
+                    
                 </div> 
+               
+                                       
             </div>
-            </div>
+                    <div class="card col-lg-6">
+                        <div align="center">
+                            
+                        <h1>${h.getNombre()}</h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore 
+                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                                nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse 
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, 
+                                sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h3>$${h.getPrecio()}</h3>    
+                        
+                        </div> 
+                    </div>
+                        <div class="col-lg-2" style="margin:auto">
+                            <%if(us.equals("normal")){%>
+                            <a href="Controlador?menu=Reserva&accion=Listar&tipo=${h.getNombre()}&foto=${h.getId()}" class="btn btn-primary btn-block">Reservar</a>
+                            <%}%>
+                        </div>
+                    </div>
+                     </c:forEach>
+            
             
                 <%}%>
         <%if (us.equals("admin")) {

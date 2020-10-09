@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-08-2020 a las 03:24:09
--- Versión del servidor: 10.1.30-MariaDB
--- Versión de PHP: 7.2.1
+-- Tiempo de generación: 09-10-2020 a las 23:08:49
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -46,8 +45,9 @@ INSERT INTO `contacto` (`idContacto`, `nombre`, `email`, `telefono`, `mensaje`, 
 (2, 'jere', 'jere@gmail.com', '0351-15555555', 'Quería consultarles si hay habitaciones stand con vista al lago', 'contestado'),
 (3, 'user1', 'qweqwe@hotmail.com', '5161165', 'queriasdasdqasd', 'contestado'),
 (5, 'asdasd', 'qwdqwd', 'qwdqd', 'qwdqwd', 'pendiente'),
-(6, 'user1', '111111', '1111111', '1111111111', 'pendiente'),
-(7, 'asdasd', '2222222', '22222222', '22222222', 'pendiente');
+(8, 'user1', '123', '1232123', 'Hola asdas asdas das asd asd asd asd asd asd asdasd asd asd asd asd asd asd asd asdasd asd ', 'pendiente'),
+(9, 'jose', 'asdqwe@hotmail.com', '241241', 'asdasdzxxc', 'pendiente'),
+(10, 'jose2', 'asasd', '123123123', 'asdasdasd', 'pendiente');
 
 -- --------------------------------------------------------
 
@@ -68,6 +68,27 @@ CREATE TABLE `habitacion` (
 INSERT INTO `habitacion` (`idHabitacion`, `nombre`, `precio`) VALUES
 (1, 'Habitacion Standar', 500),
 (2, 'Suite de Lujo', 900);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `res`
+--
+
+CREATE TABLE `res` (
+  `id` int(11) NOT NULL,
+  `fechae` varchar(50) NOT NULL,
+  `fechas` varchar(50) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `habitacion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `res`
+--
+
+INSERT INTO `res` (`id`, `fechae`, `fechas`, `nombre`, `habitacion`) VALUES
+(1, '2020-10-09', '2020-10-10', 'jose', 'Habitacion Standar');
 
 -- --------------------------------------------------------
 
@@ -114,7 +135,8 @@ INSERT INTO `usuario` (`idUsuario`, `nombre`, `direccion`, `email`, `usuario`, `
 (2, 'jere tardivo', 'cordoba', 'jere@hotmail.com', 'jere', '321', 'admin'),
 (40, 'asdad', 'asdad', 'wsdasd', 'asdasd', 'asdasd', 'normal'),
 (41, 'asdad', 'asdad', 'wsdasd', 'asdasd', 'asdasd', 'normal'),
-(42, 'qwdqwd', 'qwdqwd', 'qwdqwd', 'qwdqwd', 'qwdqwd', 'normal');
+(42, 'qwdqwd', 'qwdqwd', 'qwdqwd', 'qwdqwd', 'qwdqwd', 'normal'),
+(43, 'prueba', 'asd', 'qwe', 'qwe', '123', 'normal');
 
 --
 -- Índices para tablas volcadas
@@ -131,6 +153,12 @@ ALTER TABLE `contacto`
 --
 ALTER TABLE `habitacion`
   ADD PRIMARY KEY (`idHabitacion`);
+
+--
+-- Indices de la tabla `res`
+--
+ALTER TABLE `res`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `reserva`
@@ -153,13 +181,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `idContacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idContacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idHabitacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `res`
+--
+ALTER TABLE `res`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `reserva`

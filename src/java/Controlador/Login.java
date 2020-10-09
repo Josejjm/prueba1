@@ -102,12 +102,11 @@ public class Login extends HttpServlet {
                 HttpSession obse = request.getSession(true);
                 obse.setAttribute("sesion", us.getNivel());
                 obse.setAttribute("nom", us.getUsuario());
-                obse.setAttribute("idus", us.getId());
                 request.setAttribute("usuario", us);
                 request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
                 
             }else{
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("Bienvenidos.jsp").forward(request, response);
             }
             
         } 
