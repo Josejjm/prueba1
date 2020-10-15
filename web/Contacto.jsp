@@ -5,6 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession obse = request.getSession(false);
+    String us = (String) obse.getAttribute("sesion");
+    String nom = (String) obse.getAttribute("nom");
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,7 +53,11 @@
                     <form action="Controlador?menu=Contacto" method="POST">
                         <div class="form-group">
                             <label><b>Nombre</b></label>
+                            <%if (us.equals("normal")){%>
+                            <input type="text" name="txtNombre" value="<%=nom%>" readonly="readonly" class="form-control"> 
+                            <%} else {%>
                             <input type="text" name="txtNombre" class="form-control">
+                             <%}%>
                         </div>
                         <div class="form-group">
                             <label><b>Email</b></label>

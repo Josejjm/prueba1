@@ -13,7 +13,8 @@
 
     String nom=(String)obse.getAttribute("nom");
     String tipo = request.getParameter("tipo");
-    String foto = request.getParameter("foto");
+    String id = request.getParameter("id");
+    String precio = request.getParameter("precio");
 %>
 <!DOCTYPE html>
 <html>
@@ -24,13 +25,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+                            
             <div class="d-flex">
-                <div class="card col-lg-3">
-                    <br>
-                    <a href="Controlador?menu=Reserva&accion=Mostrar reservas&id=<%=nom%>" class="btn btn-danger" style="margin:auto" >Ver mis reservas</a>
-                    <br>
-                </div>
+                
                     <%if(tipo!=null){%>
             <div class="card col-lg-3" style="padding-top:10px">
                         <form action="Controlador?menu=Reserva" method="POST">
@@ -46,18 +43,19 @@
                             </div>
                             <div class="form-group" align="center">
                             
-                            <img src="img/h<%=foto%>.jpg"  style="width:100%"/>
+                            <img src="img/h<%=id%>.jpg"  style="width:100%"/>
                             
                             </div>
                             
                             <div class="form-group">
                             <label>Fecha ingreso</label>
-                            <input type="date" name="txtFechaE" class="form-control">
+                            <input type="date" name="txtFechaE" class="form-control" id="fi">
                             </div>
                             <div class="form-group">
                             <label>Fecha salida</label>
                             <input type="date" name="txtFechaS" class="form-control">
                             </div>
+                            
                             <br>
                             
                             <input type="submit" name="accion" value="Crear" class="btn btn-primary btn-block" style="margin:auto">
@@ -68,7 +66,26 @@
                         
                         
                     </div>
-                            <%}%>
+                    
+                    <div class="card col-lg-6">
+                        <div align="center">
+                            
+                        <h1><%=tipo%></h1>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore 
+                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                                nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse 
+                                cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, 
+                                sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h3>$<%=precio%></h3>    
+                        
+                        </div> 
+                    </div>
+                            <%} else {%> 
+                 <div class="card col-lg-3">
+                    <br>
+                    <a href="Controlador?menu=Reserva&accion=Mostrar reservas&id=<%=nom%>" class="btn btn-danger" style="margin:auto" >Ver mis reservas</a>
+                    <br>
+                </div>           
                 <div class="col-lg-6">
                     <table class="table">
                         <thead>
@@ -93,6 +110,7 @@
                         </tbody>
                     </table>
                 </div>
+                    <%}%>
                 </div>
             
                             

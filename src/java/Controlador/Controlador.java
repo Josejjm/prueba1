@@ -14,19 +14,24 @@ import Modelo.ResDAO;
 import Modelo.Usuario;
 import Modelo.UsuarioDAO;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.util.List;
 import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
 
 /**
  *
  * @author Jose
  */
+@MultipartConfig
 public class Controlador extends HttpServlet {
 
     /**
@@ -143,10 +148,12 @@ public class Controlador extends HttpServlet {
             case "Agregar":
                 String nombre = request.getParameter("txtNombre");
                 String precio = request.getParameter("txtPrecio");
+                Part part = request.getPart("fileFoto");
+                InputStream inputStream = part.getInputStream();
                 
                 ha.setNombre(nombre);
                 ha.setPrecio(Integer.parseInt(precio));
-                
+                ha.setFoto(inputStream);
                 hdao.agregar(ha);
                 request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);
                 break;  

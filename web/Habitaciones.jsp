@@ -27,6 +27,7 @@
                 
                     <div align="center">
                     <img src="img/h${h.getId()}.jpg"  style="width:100%"/>
+                    <h1>${h.getNombre()}</h1>
                     
                 </div> 
                
@@ -47,11 +48,12 @@
                     </div>
                         <div class="col-lg-2" style="margin:auto">
                             <%if(us.equals("normal")){%>
-                            <a href="Controlador?menu=Reserva&accion=Listar&tipo=${h.getNombre()}&foto=${h.getId()}" class="btn btn-primary btn-block">Reservar</a>
+                            <a href="Controlador?menu=Reserva&accion=Listar&tipo=${h.getNombre()}&id=${h.getId()}&precio=${h.getPrecio()}" class="btn btn-primary btn-block">Reservar</a>
                             <%}%>
                         </div>
                     </div>
                      </c:forEach>
+            
             
             
                 <%}%>
@@ -60,7 +62,7 @@
         <div class="d-flex">
             <div class="card col-lg-3">
                     <div class="card-body">
-                        <form action="Controlador?menu=Habitaciones" method="POST">
+                        <form action="Controlador?menu=Habitaciones" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" value="${habitacion.getNombre()}" name="txtNombre" class="form-control">
@@ -69,7 +71,10 @@
                                 <label>Precios</label>
                                 <input type="text" value="${habitacion.getPrecio()}" name="txtPrecio" class="form-control">
                             </div>
-                            
+                            <div class="form-group">
+                                <label>Fotos</label>
+                                <input type="file" value="${habitacion.getFoto()}" name="fileFoto">
+                            </div>
                             <input type="submit" name="accion" value="Agregar" class="btn btn-warning">
                             <input type="submit" name="accion" value="Actualizar" class="btn btn-danger">
                         </form>
@@ -83,7 +88,7 @@
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Precio</th>
-
+                                <th>Foto</th>
                             </tr>
                         </thead>
                             
@@ -93,11 +98,11 @@
                                     <td>${h.getId()}</td>
                                     <td>${h.getNombre()}</td>
                                     <td>${h.getPrecio()}</td>
-                                    
+                                    <td><img src="ControladorIMG?id=${h.getId()}" width="50" height="50"></td>
                                     <td>
                                         <a href="Controlador?menu=Habitaciones&accion=Editar&id=${h.getId()}" class="btn btn-primary">Editar</a>
                                         <b></b>
-                                        <a href="Controlador?menu=Habitaciones&accion=Eliminar&id=${h.getId()}" class="btn btn-danger">Eliminar</a>
+                                        <a href="Controlador?menu=Habitaciones&accion=Eliminar&id=${h.getId()}" class="btn btn-danger" id="confirmar">Eliminar</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -112,7 +117,7 @@
         <%}
         %>
     </body>
-    
+    <script src="js/Confirmacion.js"></script>    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    HttpSession obse = request.getSession(false);
+    HttpSession obse = request.getSession();
     String us = (String) obse.getAttribute("sesion");
 
 %>
@@ -20,6 +20,7 @@
         <style type="text/css">
             html, body, div, iframe { margin:0; padding:0; height:100%; }
             iframe, img { display:block; width:100%; border:none; }
+            
         </style>
     </head>
     <body>
@@ -55,23 +56,21 @@
                     </li>
                     <%}
                     %>
+                    <% if (us.equals("admin") || us.equals("normal")) {%>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hola ${usuario.getUsuario()}</a>
+                    </li>
+                    <%}%>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Nivel: ${usuario.getNivel()}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-success" href="Controlador?menu=index" method="POST">Salir</a>
+                    </li>
+                    
                 </ul>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Mi cuenta
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
-                        
-                        <%if (us.equals("admin") || us.equals("normal")) {
-                        %>
-                        <a class="dropdown-item" href="#">Nombre: ${usuario.getUsuario()}</a>
-                        <%} else {%>
-                        <a class="dropdown-item" href="#">Nombre: Visitante</a>
-                        <%}%>
-                        <a class="dropdown-item" href="#">Nivel: ${usuario.getNivel()}</a>
-                        <a class="dropdown-item" href="Controlador?menu=index" method="POST">Salir</a>
-                    </div>
-                </div>
+                    
+                
             </div>
         </header>
         <main>
@@ -81,6 +80,65 @@
             <iframe name="iframe"> 
 
             </iframe>
+            <!-- Footer -->
+            <footer class="page-footer font-small blue pt-4">
+
+              <!-- Footer Links -->
+              <div class="container-fluid text-center text-md-left">
+
+                <!-- Grid row-->
+                <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+                  <!-- Grid column -->
+                  <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="Controlador?menu=Reserva&accion=Listar" target="iframe">Reservas</a>
+                    </h6>
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                  <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#!">Products</a>
+                    </h6>
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                  <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#!">Awards</a>
+                    </h6>
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                  <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#!">Help</a>
+                    </h6>
+                  </div>
+                  <!-- Grid column -->
+
+                  <!-- Grid column -->
+                  <div class="col-md-2 mb-3">
+                    <h6 class="text-uppercase font-weight-bold">
+                      <a href="#!">Contact</a>
+                    </h6>
+                  </div>
+                  <!-- Grid column -->
+
+                </div>
+                <!-- Grid row-->
+
+              </div>
+              <!-- Footer Links -->
+
+              
+
+            </footer>
+            
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

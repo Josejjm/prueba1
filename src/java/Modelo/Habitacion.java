@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.io.InputStream;
+
 /**
  *
  * @author Jose
@@ -13,15 +15,27 @@ public class Habitacion {
     int id;
     String nombre;
     int precio;
+    InputStream foto;
 
     public Habitacion() {
     }
 
-    public Habitacion(int id, String nombre, int precio) {
+    public Habitacion(int id, String nombre, int precio, InputStream foto) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
+        this.foto = foto;
     }
+
+    public InputStream getFoto() {
+        return foto;
+    }
+
+    public void setFoto(InputStream foto) {
+        this.foto = foto;
+    }
+
+    
 
     public int getId() {
         return id;
