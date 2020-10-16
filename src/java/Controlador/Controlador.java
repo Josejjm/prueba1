@@ -168,11 +168,14 @@ public class Controlador extends HttpServlet {
             case "Actualizar":
                 String hnombre = request.getParameter("txtNombre");
                 String hprecio = request.getParameter("txtPrecio");
+                Part hfoto = request.getPart("fileFoto");
+                InputStream inputStream1 = hfoto.getInputStream();
                 
                 ha.setId(idh);
                 ha.setNombre(hnombre);
                 if(!hprecio.equals(""))
                 ha.setPrecio(Integer.parseInt(hprecio));
+                ha.setFoto(inputStream1);
                 
                 hdao.actualizar(ha);
                 request.getRequestDispatcher("Controlador?menu=Habitaciones&accion=Listar").forward(request, response);

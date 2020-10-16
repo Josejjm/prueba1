@@ -68,6 +68,7 @@
                             <div class="form-group">
                                 <label>Estado</label>
                                 <input type="text" value="${contacto.getEstado()}" name="txtEstado" class="form-control">
+                                
                             </div>
 
                             <input type="submit" name="accion" value="Agregar" class="btn btn-warning">

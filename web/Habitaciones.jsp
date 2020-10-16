@@ -26,8 +26,8 @@
             <div class="card col-lg-4" style="padding:10px">
                 
                     <div align="center">
-                    <img src="img/h${h.getId()}.jpg"  style="width:100%"/>
-                    <h1>${h.getNombre()}</h1>
+                    <img src="ControladorIMG?id=${h.getId()}" width="250">
+                    
                     
                 </div> 
                
@@ -98,7 +98,7 @@
                                     <td>${h.getId()}</td>
                                     <td>${h.getNombre()}</td>
                                     <td>${h.getPrecio()}</td>
-                                    <td><img src="ControladorIMG?id=${h.getId()}" width="50" height="50"></td>
+                                    <td><img src="ControladorIMG?id=${h.getId()}" width="250"></td>
                                     <td>
                                         <a href="Controlador?menu=Habitaciones&accion=Editar&id=${h.getId()}" class="btn btn-primary">Editar</a>
                                         <b></b>

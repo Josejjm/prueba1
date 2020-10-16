@@ -53,7 +53,7 @@ public class HabitacionDAO {
     }
     
     public void listarImg(int id, HttpServletResponse response){
-        String sql = "select * from hab where id="+id;
+        String sql = "select * from hab where idHabitacion="+id;
         InputStream inputstream = null;
         OutputStream outputStream = null;
         BufferedInputStream bufferedInputStream = null;
@@ -117,14 +117,15 @@ public class HabitacionDAO {
     }
     
     public int actualizar(Habitacion ha){
-        String sql="update hab set nombre=?, precio=? where idHabitacion=?";
+        String sql="update hab set nombre=?, precio=?, foto=? where idHabitacion=?";
         
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);
             ps.setString(1, ha.getNombre());
             ps.setInt(2, ha.getPrecio());
-            ps.setInt(3, ha.getId());
+            ps.setBlob(3, ha.getFoto());
+            ps.setInt(4, ha.getId());
             ps.executeUpdate();
             
             

@@ -43,7 +43,7 @@
                             </div>
                             <div class="form-group" align="center">
                             
-                            <img src="img/h<%=id%>.jpg"  style="width:100%"/>
+                            <img src="ControladorIMG?id=<%=id%>" width="250">
                             
                             </div>
                             
