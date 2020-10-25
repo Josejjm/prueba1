@@ -27,15 +27,7 @@ public class Habitacion {
         this.foto = foto;
     }
 
-    public InputStream getFoto() {
-        return foto;
-    }
-
-    public void setFoto(InputStream foto) {
-        this.foto = foto;
-    }
-
-    
+  
 
     public int getId() {
         return id;
@@ -52,6 +44,16 @@ public class Habitacion {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+      public InputStream getFoto() {
+        return foto;
+    }
+
+    public void setFoto(InputStream foto) {
+        this.foto = foto;
+    }
+
+    
 
     public int getPrecio() {
         return precio;

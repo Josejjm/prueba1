@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import static java.lang.System.out;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
@@ -60,6 +61,8 @@ public class Controlador extends HttpServlet {
     ResDAO resdao = new ResDAO();
     int idres;
     
+    int total=0;
+    List<Res> lista1 = new ArrayList<>();
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -197,33 +200,54 @@ public class Controlador extends HttpServlet {
             switch(accion){
                 
                 case "Listar":
+                    total = 0;
+                    String nombre = request.getParameter("nom");
+                    
+                    String fecha = request.getParameter("tipo");
+                    List reservas = resdao.consultar(fecha);
+                    request.setAttribute("habita", reservas);
+                    
+                    lista1 = resdao.listar(nombre);
+                    for (int i = 0; i < lista1.size(); i++) {
+                        total = total + lista1.get(i).getPrecio();
+                    }
+                    request.setAttribute("total", total);
+                    request.setAttribute("res", lista1);
                     request.getRequestDispatcher("Reserva.jsp").forward(request, response);
                     break;
                 
-                case "Mostrar reservas":
-                    String nombre = request.getParameter("id");
-                    List lista = resdao.listar(nombre);
-                    request.setAttribute("res", lista);
-                    break;
+                case "Consultar":
                     
+                    break;
                 
-                case "Crear":
+                case "Agregar":
+                int cont=0;
                 String fechaE = request.getParameter("txtFechaE");
-                String fechaS = request.getParameter("txtFechaS");
-                String nombre1 = request.getParameter("txtNombre");
+                int precio = Integer.parseInt(request.getParameter("txtPrecio"));
+                String nombre2 = request.getParameter("txtNombre");
                 String habitacion = request.getParameter("txtHabitacion");
-                if(fechaE.equals("") || fechaS.equals("") || 
-                        nombre1.equals("") || habitacion.equals("") ){
-                      request.getRequestDispatcher("Reserva.jsp").forward(request, response);
+                
+                cont=resdao.consultarfecha(fechaE);
+                
+                if(fechaE.equals("") || cont!=0 || 
+                        nombre2.equals("") || habitacion.equals("") ){
+                      request.getRequestDispatcher("Controlador?menu=Reserva&accion=Listar&nom="+nombre2+"").forward(request, response);
 
                         }else {
                 res.setFechaE(fechaE);
-                res.setFechaS(fechaS);
-                res.setNombre(nombre1);
+                res.setPrecio(precio);
+                res.setNombre(nombre2);
                 res.setHabitacion(habitacion);
                 resdao.agregar(res); 
-                request.getRequestDispatcher("Reserva.jsp").forward(request, response);
+                request.getRequestDispatcher("Controlador?menu=Reserva&accion=Listar&nom="+nombre2+"").forward(request, response);
                 }
+                break;
+                
+                case "Eliminar":
+                String nombre3 = request.getParameter("nom");
+                idres=Integer.parseInt(request.getParameter("id"));
+                resdao.eliminar(idres);
+                request.getRequestDispatcher("Controlador?menu=Reserva&accion=Listar&nom="+nombre3+"").forward(request, response);
                 break;
                 
                 default:

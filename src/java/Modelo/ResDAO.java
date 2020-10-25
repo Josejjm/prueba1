@@ -35,7 +35,7 @@ public class ResDAO {
                 Res r = new Res();
                 r.setId(rs.getInt(1));
                 r.setFechaE(rs.getString(2));
-                r.setFechaS(rs.getString(3));
+                r.setPrecio(rs.getInt(3));
                 r.setNombre(rs.getString(4));
                 r.setHabitacion(rs.getString(5));
                 lista.add(r);
@@ -47,13 +47,54 @@ public class ResDAO {
         return lista;
     }
     
+    public List consultar(String habitacion){
+        
+        String sql = "select fechae from res where habitacion='"+habitacion+"'";
+        List<Res> lista = new ArrayList<>();
+        try {
+            con=cn.Conectar();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Res r = new Res();
+                r.setFechaE(rs.getString(1));
+                lista.add(r);
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return lista;
+    }
+    
+    public int consultarfecha(String fecha){
+        int cont=0;
+        String sql = "select fechae from res where fechae='"+fecha+"'";
+        List<Res> lista = new ArrayList<>();
+        try {
+            con=cn.Conectar();
+            ps=con.prepareStatement(sql);
+            rs=ps.executeQuery();
+            while(rs.next()){
+                Res r = new Res();
+                r.setFechaE(rs.getString(1));
+                cont++;
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        return cont;
+    }
+    
+    
     public int agregar(Res re){
-        String sql="insert into res (fechae, fechas, nombre, habitacion) values (?, ?, ?, ?)";
+        String sql="insert into res (fechae, precio, nombre, habitacion) values (?, ?, ?, ?)";
         try {
             con=cn.Conectar();
             ps=con.prepareStatement(sql);
             ps.setString(1, re.getFechaE());
-            ps.setString(2, re.getFechaS());
+            ps.setInt(2, re.getPrecio());
             ps.setString(3, re.getNombre());
             ps.setString(4, re.getHabitacion());
 
@@ -63,6 +104,17 @@ public class ResDAO {
         } catch (Exception e) {
         }
         return r;
+    }
+    
+    public void eliminar(int id){
+        String sql = "delete from res where id="+id;
+        try {
+            con=cn.Conectar();
+            ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
     }
         
 }

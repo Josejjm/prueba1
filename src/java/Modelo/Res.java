@@ -5,18 +5,17 @@ package Modelo;
 public class Res {
     int id;
     String fechaE;
-    String fechaS;
+    int precio;
     String nombre;
     String habitacion;
 
     public Res() {
     }
 
-
-    public Res(int id, String fechaE, String fechaS, String nombre, String habitacion) {
+    public Res(int id, String fechaE, int precio, String nombre, String habitacion) {
         this.id = id;
         this.fechaE = fechaE;
-        this.fechaS = fechaS;
+        this.precio = precio;
         this.nombre = nombre;
         this.habitacion = habitacion;
     }
@@ -37,12 +36,12 @@ public class Res {
         this.fechaE = fechaE;
     }
 
-    public String getFechaS() {
-        return fechaS;
+    public int getPrecio() {
+        return precio;
     }
 
-    public void setFechaS(String fechaS) {
-        this.fechaS = fechaS;
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
 
     public String getNombre() {
@@ -61,6 +60,6 @@ public class Res {
         this.habitacion = habitacion;
     }
 
-    
+   
     
 }

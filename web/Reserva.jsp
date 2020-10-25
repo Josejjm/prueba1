@@ -15,6 +15,7 @@
     String tipo = request.getParameter("tipo");
     String id = request.getParameter("id");
     String precio = request.getParameter("precio");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -25,18 +26,26 @@
         <title>JSP Page</title>
     </head>
     <body>
-                            
+                   <% if(us.equals("")){%>
+                   <div align="center" style="margin: 100px"><h1>Debe estar logueado para realizar reservas</h1></div>
+                     <%} else {%>
+                     
             <div class="d-flex">
                 
-                    <%if(tipo!=null){%>
-            <div class="card col-lg-3" style="padding-top:10px">
+                    
+                    
+            <div class="card col-lg-4" style="padding-top:10px">
+                <%if(tipo!=null){%>
                         <form action="Controlador?menu=Reserva" method="POST">
                             
-
+                            
                             <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" value="<%=nom%>" name="txtNombre" readonly="readonly" class="form-control">
                             </div>
+                            
+                                
+                            
                             <div class="form-group">
                             <label>Habitacion</label>
                             <input type="text" value="<%=tipo%>" name="txtHabitacion" readonly="readonly" class="form-control">
@@ -48,52 +57,52 @@
                             </div>
                             
                             <div class="form-group">
-                            <label>Fecha ingreso</label>
+                            <label>Precio por noche</label>
+                            <input type="text" value="<%=precio%>" name="txtPrecio" readonly="readonly" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                            <label>Fecha</label>
                             <input type="date" name="txtFechaE" class="form-control" id="fi">
                             </div>
-                            <div class="form-group">
-                            <label>Fecha salida</label>
-                            <input type="date" name="txtFechaS" class="form-control">
-                            </div>
-                            
                             <br>
                             
-                            <input type="submit" name="accion" value="Crear" class="btn btn-primary btn-block" style="margin:auto">
+                            <input type="submit" name="accion" value="Agregar" class="btn btn-primary btn-block" style="margin:auto">
                             <br>
+                            
+                            
                             
                             
                         </form>
+                            <%}%>
                         
                         
                     </div>
-                    
-                    <div class="card col-lg-6">
-                        <div align="center">
+                 <div class="card col-lg-3" style="padding-top:10px">           
+                 <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Fechas no disponibles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${habita}" var="c">
+                                <tr>
+                                    <td>${c.getFechaE()}</td> 
+                                </tr>
+                            </c:forEach>
+                                
+                        </tbody>
+                    </table>
+                 </div>           
                             
-                        <h1><%=tipo%></h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore 
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                                nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse 
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, 
-                                sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <h3>$<%=precio%></h3>    
-                        
-                        </div> 
-                    </div>
-                            <%} else {%> 
-                 <div class="card col-lg-3">
-                    <br>
-                    <a href="Controlador?menu=Reserva&accion=Mostrar reservas&id=<%=nom%>" class="btn btn-danger" style="margin:auto" >Ver mis reservas</a>
-                    <br>
-                </div>           
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Nº reserva</th>
-                                <th>Fecha ingreso</th>
-                                <th>Fecha salida</th>
-                                <th>Nombre</th>
+                                <th>Fecha reservada</th>
+                                <th>Precio</th>
                                 <th>Habitacion</th>
                             </tr>
                         </thead>
@@ -102,16 +111,27 @@
                                 <tr>
                                     <td>${c.getId()}</td> 
                                     <td>${c.getFechaE()}</td>
-                                    <td>${c.getFechaS()}</td>
-                                    <td>${c.getNombre()}</td> 
+                                    <td>$${c.getPrecio()}</td>
                                     <td>${c.getHabitacion()}</td> 
+                                    <td><a href="Controlador?menu=Reserva&accion=Eliminar&id=${c.getId()}&nom=${c.getNombre()}" class="btn btn-danger" id="confirmar">Eliminar</a></td>
                                 </tr>
                             </c:forEach>
+                                
                         </tbody>
                     </table>
+                    <div class="d-flex">
+                    <div class="col-lg-4">
+                        Debe abonar por caja
+                    </div>
+                    <div class="col-lg-5">
+                    <input type="text" value="$${total}" name="" readonly="readonly" class="form-control">
+                    </div>
+                    </div>
                 </div>
                     <%}%>
                 </div>
+                   
+                
             
                             
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

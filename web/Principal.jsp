@@ -8,6 +8,8 @@
 <%
     HttpSession obse = request.getSession();
     String us = (String) obse.getAttribute("sesion");
+    
+    String nom=(String)obse.getAttribute("nom");
 
 %>
 <!DOCTYPE html>
@@ -34,7 +36,7 @@
                     <%if (us.equals("admin") || us.equals("normal")) {
                     %>
                     <li class="nav-item">
-                        <a class="nav-link" href="Controlador?menu=Reserva&accion=Listar" target="iframe">Reservas</a>
+                        <a class="nav-link" href="Controlador?menu=Reserva&accion=Listar&nom=<%=nom%>" target="iframe">Reservas</a>
                     </li>
                     
                     <%}

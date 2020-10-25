@@ -9,7 +9,7 @@
 <%
     HttpSession obse = request.getSession(false);
     String us = (String) obse.getAttribute("sesion");
-
+    String nom=(String)obse.getAttribute("nom");
 %>
 <!DOCTYPE html>
 <html>
@@ -47,8 +47,8 @@
                         </div> 
                     </div>
                         <div class="col-lg-2" style="margin:auto">
-                            <%if(us.equals("normal")){%>
-                            <a href="Controlador?menu=Reserva&accion=Listar&tipo=${h.getNombre()}&id=${h.getId()}&precio=${h.getPrecio()}" class="btn btn-primary btn-block">Reservar</a>
+                            <%if(us.equals("normal") || us.equals("")){%>
+                            <a href="Controlador?menu=Reserva&accion=Listar&tipo=${h.getNombre()}&id=${h.getId()}&precio=${h.getPrecio()}&nom=<%=nom%>" class="btn btn-primary btn-block">Reservar</a>
                             <%}%>
                         </div>
                     </div>
