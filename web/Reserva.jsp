@@ -38,7 +38,7 @@
                 <%if(tipo!=null){%>
                         <form action="Controlador?menu=Reserva" method="POST">
                             
-                            
+                            <input type="hidden" value="<%=id%>" name="id">
                             <div class="form-group">
                             <label>Nombre</label>
                             <input type="text" value="<%=nom%>" name="txtNombre" readonly="readonly" class="form-control">
@@ -68,6 +68,7 @@
                             <br>
                             
                             <input type="submit" name="accion" value="Agregar" class="btn btn-primary btn-block" style="margin:auto">
+                            
                             <br>
                             
                             

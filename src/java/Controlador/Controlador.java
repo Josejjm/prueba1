@@ -203,8 +203,8 @@ public class Controlador extends HttpServlet {
                     total = 0;
                     String nombre = request.getParameter("nom");
                     
-                    String fecha = request.getParameter("tipo");
-                    List reservas = resdao.consultar(fecha);
+                    String tipo = request.getParameter("tipo");
+                    List reservas = resdao.consultar(tipo);
                     request.setAttribute("habita", reservas);
                     
                     lista1 = resdao.listar(nombre);
@@ -222,6 +222,7 @@ public class Controlador extends HttpServlet {
                 
                 case "Agregar":
                 int cont=0;
+                String id = request.getParameter("id");
                 String fechaE = request.getParameter("txtFechaE");
                 int precio = Integer.parseInt(request.getParameter("txtPrecio"));
                 String nombre2 = request.getParameter("txtNombre");
@@ -229,17 +230,16 @@ public class Controlador extends HttpServlet {
                 
                 cont=resdao.consultarfecha(fechaE);
                 
-                if(fechaE.equals("") || cont!=0 || 
-                        nombre2.equals("") || habitacion.equals("") ){
-                      request.getRequestDispatcher("Controlador?menu=Reserva&accion=Listar&nom="+nombre2+"").forward(request, response);
-
+                if(fechaE.equals("") || cont!=0 ){
+                      request.getRequestDispatcher("Controlador?menu=Reserva&accion=Listar&nom="+nombre2+"&tipo="+habitacion+"&precio="+precio+"").forward(request, response);
+                      
                         }else {
                 res.setFechaE(fechaE);
                 res.setPrecio(precio);
                 res.setNombre(nombre2);
                 res.setHabitacion(habitacion);
                 resdao.agregar(res); 
-                request.getRequestDispatcher("Controlador?menu=Reserva&accion=Listar&nom="+nombre2+"").forward(request, response);
+                request.getRequestDispatcher("Controlador?menu=Reserva&accion=Listar&nom="+nombre2+"&tipo="+habitacion+"&precio="+precio+"").forward(request, response);
                 }
                 break;
                 
