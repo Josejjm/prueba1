@@ -24,10 +24,10 @@
             href="//fonts.googleapis.com/css?family=Prompt:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,thai,vietnamese"
             rel="stylesheet">
         <link href="//fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-        <title>Registro</title>
+        <title>Contacto</title>
         <style>
             body {
-                
+                background-image: url(https://img.freepik.com/foto-gratis/fondo-nubes-color-pastel_66899-709.jpg?size=626&ext=jpg);
                 background-repeat: no-repeat;
                 background-size: cover;
             }
@@ -70,7 +70,6 @@
                         <div class="form-group">
                             <label><b>Mensaje</b></label>
                             <textarea name="txtMensaje" style="height: 200px" class="form-control"></textarea>
-
                         </div>
                         <br>
                         <input type="submit" name="accion" value="Enviar" class="btn btn-primary btn-block">
@@ -97,13 +96,11 @@
                                 </p>
                             </div>
                         </div>
-
                         <div class="clearfix"> </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

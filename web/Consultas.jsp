@@ -23,7 +23,7 @@
         <title>Consultas</title>
         <style>
             body {
-                
+                background-image: url(https://img.freepik.com/foto-gratis/fondo-nubes-color-pastel_66899-709.jpg?size=626&ext=jpg);
                 background-repeat: no-repeat;
                 background-size: cover;
             }
@@ -68,7 +68,7 @@
                             <div class="form-group">
                                 <label>Estado</label>
                                 <input type="text" value="${contacto.getEstado()}" name="txtEstado" class="form-control">
-                                
+
                             </div>
 
                             <input type="submit" name="accion" value="Agregar" class="btn btn-warning">

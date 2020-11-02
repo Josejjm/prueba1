@@ -33,7 +33,7 @@
                         <p>Es un hotel situado al pie de las sierras de Cordoba con una espectacular vista al Lago. <span>
                                 Es un Excelente lugar para relajarse, pasar el tiempo en familia y realizar excursiones guiadas para conocer
                                 la cultura de la region.</span></p>
-                        
+
                         <div class="w3l-button">
                             <a href="Controlador?menu=Ingreso" data-toggle="modal" data-target="#myModal">Ingresar</a>
                         </div>
@@ -113,7 +113,5 @@
                 </div>
             </div>
         </div>
-
-
     </body>
 </html>

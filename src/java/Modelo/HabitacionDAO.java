@@ -51,7 +51,7 @@ public class HabitacionDAO {
         
         return lista;
     }
-    
+   
     public void listarImg(int id, HttpServletResponse response){
         String sql = "select * from hab where idHabitacion="+id;
         InputStream inputstream = null;

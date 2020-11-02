@@ -17,6 +17,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <title>Habitaciones</title>
+        <style>
+            body {
+                background-image: url(https://img.freepik.com/foto-gratis/fondo-nubes-color-pastel_66899-709.jpg?size=626&ext=jpg);
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
     </head>
     <body>
             <%if(us.equals("normal")||us.equals("")){%>
@@ -37,11 +44,9 @@
                         <div align="center">
                             
                         <h1>${h.getNombre()}</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore 
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                                nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse 
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, 
-                                sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p>Nuestras habitaciones cuentan con camas grandes, TV LCD, 
+                                   secador de cabello y caja de seguridad. 
+                                   Algunas habitaciones ofrecen vistas al lago.</p>
                         <h3>$${h.getPrecio()}</h3>    
                         
                         </div> 

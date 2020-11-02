@@ -61,7 +61,7 @@
                                 <input type="password" name="pass" class="form-control">
                             </div>
 
-                            <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block">
+                            <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block" href="Controlador?menu=Habitaciones&accion=Listar" target="iframe" >
                             <br>
                             <input type="submit" name="accion" value="Visitante" class="btn btn-primary btn-block">
                             <br>

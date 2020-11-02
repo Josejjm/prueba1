@@ -8,8 +8,8 @@
 <%
     HttpSession obse = request.getSession();
     String us = (String) obse.getAttribute("sesion");
-    
-    String nom=(String)obse.getAttribute("nom");
+
+    String nom = (String) obse.getAttribute("nom");
 
 %>
 <!DOCTYPE html>
@@ -22,25 +22,17 @@
         <style type="text/css">
             html, body, div, iframe { margin:0; padding:0; height:100%; }
             iframe, img { display:block; width:100%; border:none; }
-            
+
         </style>
     </head>
     <body>
-        <header id="main-header" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <header name="arriba" id="main-header" class="navbar navbar-expand-lg navbar-dark bg-dark">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    
-                    <%if (us.equals("admin") || us.equals("normal")) {
-                    %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Controlador?menu=Reserva&accion=Listar&nom=<%=nom%>" target="iframe">Reservas</a>
-                    </li>
-                    
-                    <%}
-                    %>
+
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=Habitaciones&accion=Listar" target="iframe">Habitaciones</a>
                     </li>
@@ -50,12 +42,21 @@
                     <%if (us.equals("admin")) {
                     %>
                     <li class="nav-item">
-                        <a class="nav-link" href="Controlador?menu=Usuario&accion=Listar" target="iframe">Usuarios</a>
-                    </li>
-                    
-                    <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=Consultas&accion=Listar" target="iframe">Consultas</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?menu=Usuario&accion=Listar" target="iframe">Usuarios</a>
+                    </li>
+                    <%}
+                    %>
+
+                    <%if (us.equals("admin") || us.equals("normal")) {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?menu=Reserva&accion=Listar&nom=<%=nom%>" target="iframe">Reservas</a>
+                    </li>
+
                     <%}
                     %>
                     <% if (us.equals("admin") || us.equals("normal")) {%>
@@ -69,78 +70,44 @@
                     <li class="nav-item">
                         <a class="btn btn-outline-success" href="Controlador?menu=index" method="POST">Salir</a>
                     </li>
-                    
                 </ul>
-                    
-                
             </div>
         </header>
         <main>
             <img src="img/logo.png" alt=""/>
         </main>
         <div class="m-6">
-            <iframe name="iframe"> 
-
+            <iframe scrolling="auto" allowtransparency="true" name="iframe" style="background-image:url(https://cf.bstatic.com/images/hotel/max1024x768/119/119093621.jpg);background-repeat: no-repeat;
+                    background-size: cover;"> 
             </iframe>
-            <!-- Footer -->
-            <footer class="page-footer font-small blue pt-4">
 
-              <!-- Footer Links -->
-              <div class="container-fluid text-center text-md-left">
-
-                <!-- Grid row-->
-                <div class="row text-center d-flex justify-content-center pt-5 mb-3">
-
-                  <!-- Grid column -->
-                  <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                      <a href="Controlador?menu=Reserva&accion=Listar" target="iframe">Reservas</a>
-                    </h6>
-                  </div>
-                  <!-- Grid column -->
-
-                  <!-- Grid column -->
-                  <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                      <a href="#!">Products</a>
-                    </h6>
-                  </div>
-                  <!-- Grid column -->
-
-                  <!-- Grid column -->
-                  <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                      <a href="#!">Awards</a>
-                    </h6>
-                  </div>
-                  <!-- Grid column -->
-
-                  <!-- Grid column -->
-                  <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                      <a href="#!">Help</a>
-                    </h6>
-                  </div>
-                  <!-- Grid column -->
-
-                  <!-- Grid column -->
-                  <div class="col-md-2 mb-3">
-                    <h6 class="text-uppercase font-weight-bold">
-                      <a href="#!">Contact</a>
-                    </h6>
-                  </div>
-                  <!-- Grid column -->
-
+            <footer class="page-footer font-small blue pt-4" style="background-image: url(img/footer.png)">
+                <div class="container-fluid text-center text-md-left">
+                    <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="Controlador?menu=Reserva&accion=Listar" target="iframe" style="color: #FFFFFF">Reservas</a>
+                            </h6>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="Controlador?menu=Habitaciones&accion=Listar" target="iframe" style="color: #FFFFFF">Habitaciones</a>
+                            </h6>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="Controlador?menu=Consultas&accion=Listar" target="iframe" style="color: #FFFFFF">Consultas</a>
+                            </h6>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <h6 class="text-uppercase font-weight-bold">
+                                <a href="Contacto.jsp" target="iframe" style="color: #FFFFFF">Contacto</a>
+                            </h6>
+                        </div>
+                    </div>
                 </div>
-                <!-- Grid row-->
-
-              </div>
-              <!-- Footer Links -->
-
-              
-
             </footer>
-            
+
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
