@@ -9,7 +9,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/font-awesome.css" rel="stylesheet">
@@ -102,16 +101,32 @@
                         </div>
                         <div class="footer-grid-info">
                             <p>Hotel del Lago S.A.
-                                <span>Av. Siempre Viva 123, Embalse</span>
+                                <span>De los Navegantes S/N</span> 
+                                <span>Villa del Dique</span>    
                             </p>
                             <p class="phone">Tel : +54 9 3571 12345
                                 <span>Email : <a href="mailto:info@lagohotel.com">info@lagohotel.com</a></span>
                             </p>
                         </div>
                     </div>
+                    <div class="col-md-3 footer-grid" style="float: center">
+                        <div class="footer-grid-heading">
+                            <h4>Escribenos Ahora</h4>
+                        </div>
+                        <a href="https://api.whatsapp.com/send?phone=5493513528111&text=Quiero%20más%20información,%20por%20favor." target="_blank"> 
+                            <img src="http://s2.accesoperu.com/logos/btn_whatsapp.png" alt="" style="width: 50px;height: 50px;margin-left: 80px;margin-top: 30px"> </a>
+                    </div>
+                    <div class="col-md-3 footer-grid" style="float: right">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1688.1545697749063!2d-64.44712311082115!3d-32.195899666643484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sar!4v1604340155839!5m2!1ses-419!2sar" width="300" height="200" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
                     <div class="clearfix"> </div>
                 </div>
             </div>
+            <br>
+            <br>
+            <p style="color: lightgrey;text-align: center"><b>Diseñada por Martinez-Tardivo</b></p>
         </div>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        
     </body>
 </html>

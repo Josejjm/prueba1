@@ -16,7 +16,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/font-awesome.css" rel="stylesheet">
         <link href="css/easy-responsive-tabs.css" rel='stylesheet' type='text/css' />
@@ -53,15 +52,15 @@
                     <form action="Controlador?menu=Contacto" method="POST">
                         <div class="form-group">
                             <label><b>Nombre</b></label>
-                            <%if (us.equals("normal")){%>
+                            <%if (us.equals("normal")) {%>
                             <input type="text" name="txtNombre" value="<%=nom%>" readonly="readonly" class="form-control"> 
                             <%} else {%>
                             <input type="text" name="txtNombre" class="form-control">
-                             <%}%>
+                            <%}%>
                         </div>
                         <div class="form-group">
                             <label><b>Email</b></label>
-                            <input type="text" name="txtEmail" class="form-control">
+                            <input type="email" name="txtEmail" class="form-control">
                         </div>
                         <div class="form-group">
                             <label><b>Telefono</b></label>
@@ -82,23 +81,31 @@
             <br>
             <div id="first">
                 <div class="container">
-                    <div class="footer-grids">
-                        <div class="col-md-3 footer-grid">
-                            <div class="footer-grid-heading">
-                                <h4><u>Direccion</u></h4>
-                            </div>
-                            <div class="footer-grid-info">
-                                <p>Hotel del Lago S.A. <br>
-                                    <span>Av. Siempre Viva 123, Embalse</span>
-                                </p>
-                                <p class="phone">Tel : +54 9 3571 12345 <br>
-                                    <span>Email : <a href="mailto:info@lagohotel.com">info@lagohotel.com</a></span>
-                                </p>
-                            </div>
+                <div class="footer-grids">
+                    <div class="col-md-3 footer-grid" style="float: left">
+                        <div class="footer-grid-heading">
+                            <h4>Direccion</h4>
                         </div>
-                        <div class="clearfix"> </div>
+                        <div class="footer-grid-info">
+                            <p>Hotel del Lago S.A.
+                                <span>De los Navegantes S/N</span> 
+                                <span>Villa del Dique</span>    
+                            </p>
+                            <p class="phone">Tel : +54 9 3571 12345
+                                <span>Email : <a href="mailto:info@lagohotel.com">info@lagohotel.com</a></span>
+                            </p>
+                        </div>
                     </div>
+                    <div class="col-md-3 footer-grid" style="float: right">
+                        <div class="footer-grid-heading">
+                            <h4>Escribenos Ahora</h4>
+                        </div>
+                        <a href="https://api.whatsapp.com/send?phone=5493513528111&text=Quiero%20más%20información,%20por%20favor." target="_blank"> 
+                            <img src="http://s2.accesoperu.com/logos/btn_whatsapp.png" alt="" style="width: 50px;height: 50px;margin-left: 80px;margin-top: 30px"> </a>
+                    </div>
+                    <div class="clearfix"> </div>
                 </div>
+
             </div>
         </div>
 
