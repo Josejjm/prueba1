@@ -1,8 +1,4 @@
-<%-- 
-    Document   : Contacto
-    Created on : 16/08/2020, 19:01:10
-    Author     : Jose
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%

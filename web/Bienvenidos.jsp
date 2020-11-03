@@ -60,7 +60,7 @@
 
                             <input type="submit" name="accion" value="Ingresar" class="btn btn-primary btn-block" href="Controlador?menu=Habitaciones&accion=Listar" target="iframe" >
                             
-                            <input type="submit" name="accion" value="Ingresar como Visitante" class="btn btn-primary btn-block">
+                            <input type="submit" name="accion" value="Visitante" class="btn btn-primary btn-block">
                             <br>
                         </form>
                         <a href="Controlador?menu=Registro&accion=Registrar" class="btn btn-success btn-block">Crear Cuenta</a>

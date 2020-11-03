@@ -1,8 +1,4 @@
-<%-- 
-    Document   : Consultas
-    Created on : 23/08/2020, 21:19:01
-    Author     : Jose
---%>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

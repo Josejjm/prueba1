@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Registro
-    Created on : 18/08/2020, 21:52:42
-    Author     : Jose
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

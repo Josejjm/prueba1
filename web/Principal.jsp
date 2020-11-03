@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Principal
-    Created on : 15/08/2020, 21:34:41
-    Author     : Jose
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : Usuario
-    Created on : 17/08/2020, 19:39:31
-    Author     : Jose
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

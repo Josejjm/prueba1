@@ -1,10 +1,4 @@
 
-<%-- 
-    Document   : Bienvenidos
-    Created on : 16/08/2020, 19:13:07
-    Author     : Jose
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
