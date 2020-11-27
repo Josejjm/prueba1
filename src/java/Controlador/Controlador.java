@@ -213,7 +213,18 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Consultar":
+                    String consulta = request.getParameter("consulta");
+                    lista1 = resdao.listarAdmin(consulta);
+                    request.setAttribute("res", lista1);
+                    break;
 
+                case "Consultar Nombre":
+                    String consultanombre = request.getParameter("txtConsulta");
+                    lista1 = resdao.listar(consultanombre);
+                    for (int i = 0; i < lista1.size(); i++) {
+                        total = total + lista1.get(i).getPrecio();
+                    }
+                    request.setAttribute("res", lista1);
                     break;
 
                 case "Agregar":
@@ -227,7 +238,7 @@ public class Controlador extends HttpServlet {
                     cont = resdao.consultarfecha(fechaE);
 
                     if (fechaE.equals("") || cont != 0) {
-                        
+
                         request.getRequestDispatcher("Controlador?menu=Reserva&accion=Listar&nom=" + nombre2 + "&tipo=" + habitacion + "&precio=" + precio + "").forward(request, response);
 
                     } else {

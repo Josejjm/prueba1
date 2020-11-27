@@ -2,8 +2,14 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 
 <%
+    Date date = new Date();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
     HttpSession obse = request.getSession();
     String us = (String) obse.getAttribute("sesion");
 
@@ -36,10 +42,10 @@
     <body>
         <% if (us.equals("")) {%>
         <div align="center" style="margin: 100px">
-            <h1>Debe estar logueado para realizar reservas</h1>
-            <input class="btn btn-primary" type="button" value="Registrarse" onclick="location.href = 'Registro.jsp'"> 
+            <h1>Debe crearse un Usuario para realizar Reservas</h1><br>
+            <h4>Cierre la sesión actual y comience el Registro</h4>
         </div>
-        <%} else {%>
+        <%} else if (us.equals("normal")) {%>
 
         <div class="d-flex">
 
@@ -68,24 +74,7 @@
 
                     <div class="form-group">
                         <label>Fecha</label>
-                        <script>
-                            function validarFecha() {
-                                var today = new Date();
-                                var dd = today.getDate();
-                                var mm = today.getMonth() + 1;
-                                var yyyy = today.getFullYear();
-                                if (dd < 10) {
-                                    dd = '0' + dd;
-                                }
-                                if (mm < 10) {
-                                    mm = '0' + mm;
-                                }
-
-                                today = yyyy + '-' + mm + '-' + dd;
-                                document.getElementById("fi").setAttribute("min", today);
-                            }
-                        </script>
-                        <input type="date" min="01/11/2020" name="txtFechaE" class="form-control" id="fi" onClick="validarFecha()">                       
+                        <input type="date" name="txtFechaE" step="1" min="<%=dateFormat.format(date)%>">                     
                     </div>
                     <br>
 
@@ -143,6 +132,46 @@
                     <div class="col-lg-5">
                         <input type="text" value="$${total}" name="" readonly="readonly" class="form-control">
                     </div>
+                </div>
+            </div>
+            <%}%>
+
+            <%if (us.equals("admin")) {%>
+
+            <div class="d-flex">
+                <div class="col-lg-2">
+                    <a href="Controlador?menu=Reserva&accion=Consultar&consulta=fechae" class="btn btn-primary" id="confirmar" style="margin: 10px">Ordenar por fecha</a><br>
+                    <a href="Controlador?menu=Reserva&accion=Consultar&consulta=nombre" class="btn btn-primary" id="confirmar" style="margin: 10px">Ordenar por nombre</a>
+                    <form  action="Controlador?menu=Reserva" method="POST">
+                        <input type="text" value="" name="txtConsulta" style="margin: 10px">
+                        <input type="submit" name="accion" value="Consultar Nombre" class="btn btn-warning btn-block" style="margin: 10px">
+
+                    </form>
+                </div>
+                <div class="col-lg-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Nº reserva</th>
+                                <th>Nombre de usuario</th>
+                                <th>Fecha reservada</th>
+                                <th>Precio</th>
+                                <th>Habitacion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${res}" var="c">
+                                <tr>
+                                    <td>${c.getId()}</td> 
+                                    <td>${c.getNombre()}</td>
+                                    <td>${c.getFechaE()}</td>
+                                    <td>$${c.getPrecio()}</td>
+                                    <td>${c.getHabitacion()}</td> 
+                                    <td><a href="Controlador?menu=Reserva&accion=Eliminar&id=${c.getId()}&nom=${c.getNombre()}" class="btn btn-danger" id="confirmar">Eliminar</a></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <%}%>

@@ -46,14 +46,23 @@
                     <%}
                     %>
 
-                    <%if (us.equals("admin") || us.equals("normal")) {
+                    <%if (us.equals("normal")) {
                     %>
                     <li class="nav-item">
                         <a class="nav-link" href="Controlador?menu=Reserva&accion=Listar&nom=<%=nom%>" target="iframe">Reservas</a>
                     </li>
-
                     <%}
                     %>
+
+                    <%if (us.equals("admin")) {
+                    %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Controlador?menu=Reserva&accion=Consultar" target="iframe">Reservas Realizadas</a>
+                    </li>
+                    <%}
+                    %>
+
+
                     <% if (us.equals("admin") || us.equals("normal")) {%>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hola ${usuario.getUsuario()}</a>
@@ -81,17 +90,12 @@
                     <div class="row text-center d-flex justify-content-center pt-5 mb-3">
                         <div class="col-md-2 mb-3">
                             <h6 class="text-uppercase font-weight-bold">
-                                <a href="Controlador?menu=Reserva&accion=Listar" target="iframe" style="color: #FFFFFF">Reservas</a>
+                                <a href="Controlador?menu=Reserva&accion=Listar&nom=<%= nom%>" target="iframe" style="color: #FFFFFF">Reservas</a>
                             </h6>
                         </div>
                         <div class="col-md-2 mb-3">
                             <h6 class="text-uppercase font-weight-bold">
                                 <a href="Controlador?menu=Habitaciones&accion=Listar" target="iframe" style="color: #FFFFFF">Habitaciones</a>
-                            </h6>
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <h6 class="text-uppercase font-weight-bold">
-                                <a href="Controlador?menu=Consultas&accion=Listar" target="iframe" style="color: #FFFFFF">Consultas</a>
                             </h6>
                         </div>
                         <div class="col-md-2 mb-3">
