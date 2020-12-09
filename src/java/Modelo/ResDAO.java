@@ -92,9 +92,9 @@ public class ResDAO {
         return lista;
     }
 
-    public int consultarfecha(String fecha) {
+    public int consultarfecha(String fecha, String habitacion) {
         int cont = 0;
-        String sql = "select fechae from res where fechae='" + fecha + "'";
+        String sql = "select fechae from res where fechae='" + fecha + "' and habitacion='" + habitacion + "'";
         List<Res> lista = new ArrayList<>();
         try {
             con = cn.Conectar();

@@ -235,7 +235,7 @@ public class Controlador extends HttpServlet {
                     String nombre2 = request.getParameter("txtNombre");
                     String habitacion = request.getParameter("txtHabitacion");
 
-                    cont = resdao.consultarfecha(fechaE);
+                    cont = resdao.consultarfecha(fechaE,habitacion);
 
                     if (fechaE.equals("") || cont != 0) {
 
