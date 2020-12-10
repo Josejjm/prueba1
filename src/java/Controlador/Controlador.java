@@ -237,7 +237,11 @@ public class Controlador extends HttpServlet {
 
                     cont = resdao.consultarfecha(fechaE,habitacion);
 
-                    if (fechaE.equals("") || cont != 0) {
+                    if (cont != 0) {
+
+                        request.getRequestDispatcher("Reservado.jsp").forward(request, response);
+
+                    } else if (fechaE.equals("")) {
 
                         request.getRequestDispatcher("Controlador?menu=Reserva&accion=Listar&nom=" + nombre2 + "&tipo=" + habitacion + "&precio=" + precio + "").forward(request, response);
 
