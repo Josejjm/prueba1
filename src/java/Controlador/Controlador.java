@@ -295,7 +295,7 @@ public class Controlador extends HttpServlet {
 
                     cdao.agregar(co);
 
-                    request.getRequestDispatcher("Bienvenidos.jsp").forward(request, response);
+                    request.getRequestDispatcher("Enviado.jsp").forward(request, response);
                 }
             }
         }
